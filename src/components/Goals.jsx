@@ -20,9 +20,7 @@ export default function Goals() {
     { id: 17, title: 'Partnerships for the Goals', desc: 'Strengthen the means of implementation and revitalize the Global Partnership for Sustainable Development.' },
   ];
 
-  // Vite helper function to dynamically load images from the assets folder.
-  // It takes the ID (e.g., 1), pads it with a zero if needed (e.g., "01"), 
-  // and fetches "E_SDG_PRINT-01.jpg".
+  // Dynamically load images from the assets folder.
   const getImageUrl = (id) => {
     const formattedId = id.toString().padStart(2, '0');
     return new URL(`../assets/goals/E_SDG_PRINT-${formattedId}.jpg`, import.meta.url).href;
@@ -58,11 +56,19 @@ export default function Goals() {
                     {goal.desc}
                   </p>
                 </div>
+                
+                {/* Dynamically Generated Link */}
                 <div className="mt-6 pt-4 border-t border-white/10">
-                  <span className="inline-block text-xs font-bold uppercase tracking-wider text-rose-300 group-hover:text-white transition-colors cursor-pointer">
+                  <a 
+                    href={`https://sight.ieee.lk/sdg/${goal.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block text-xs font-bold uppercase tracking-wider text-rose-300 group-hover:text-white transition-colors cursor-pointer"
+                  >
                     View Track &rarr;
-                  </span>
+                  </a>
                 </div>
+                
               </div>
             </div>
           ))}
