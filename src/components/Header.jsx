@@ -14,7 +14,7 @@ export default function Header() {
             className="h-12 w-auto object-contain drop-shadow-[0_0_10px_rgba(239,68,68,0.3)]" 
           />
           <span className="font-bold text-xl tracking-tight text-white hidden sm:block">
-            Sprints '26
+            SDG Sprints 2026
           </span>
         </Link>
 
