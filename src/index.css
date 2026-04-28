@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+/* This applies the Inter font to all Tailwind typography classes */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* Base styles to ensure smooth scrolling and clean text rendering */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  /* Prevent horizontal scroll issues */
+  overflow-x: hidden; 
+}
