@@ -5,13 +5,13 @@ export default function Header() {
   return (
     <header className="fixed w-full top-0 z-50 border-b border-white/10 bg-[#3a0a14]/70 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        
+
         {/* Logo Area - Now links back to home */}
         <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <img 
-            src={sdgLogo} 
-            alt="SDG Sprints Logo" 
-            className="h-12 w-auto object-contain drop-shadow-[0_0_10px_rgba(239,68,68,0.3)]" 
+          <img
+            src={sdgLogo}
+            alt="SDG Sprints Logo"
+            className="h-12 w-auto object-contain drop-shadow-[0_0_10px_rgba(239,68,68,0.3)]"
           />
           <span className="font-bold text-xl tracking-tight text-white hidden sm:block">
             SDG Sprints 2026
@@ -19,9 +19,13 @@ export default function Header() {
         </Link>
 
         {/* Navigation - Updated with Links */}
+        {/* Navigation */}
+        {/* Navigation */}
         <nav className="hidden md:flex gap-8 text-sm font-medium text-rose-200/70">
           <Link to="/" className="hover:text-white transition-colors">Home</Link>
+          <Link to="/about" className="hover:text-white transition-colors">About</Link>
           <Link to="/goals" className="hover:text-white transition-colors">The Goals</Link>
+          <Link to="/committee" className="hover:text-white transition-colors">Committee</Link> {/* <-- Add this link */}
           <a href="#" className="hover:text-white transition-colors">Guidelines</a>
         </nav>
 
