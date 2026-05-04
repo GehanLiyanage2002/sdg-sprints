@@ -19,7 +19,7 @@ export default function CommitteePage() {
       teamName: "Program & Delivery Team",
       members: [
         { name: "Sankalpa Fernando", role: "Vice-Chair Program and Delivery", imageFile: "sankalpa-fernando.jpg" },
-        { name: "Sachila Chathnuka", role: "Coordinator - Program", imageFile: "sachila-chathnuka.jpg" },
+        { name: "Sachila Chathnuka", role: "Coordinator - Program", imageFile: "sachila-chathnuka.png" },
         { name: "Kisali Buddhadasa", role: "Coordinator - Program", imageFile: "kisali-buddhadasa.jpg" },
         { name: "Mayantha Nawarathna", role: "Coordinator - Logistics", imageFile: "mayantha-nawarathna.jpg" }
       ]
@@ -36,7 +36,7 @@ export default function CommitteePage() {
       teamName: "Public Visibility Team",
       members: [
         { name: "Senath Chandira", role: "Vice-Chair Public Visibility", imageFile: "senath-chandira.jpg" },
-        { name: "Gehan Liyanage", role: "Coordinator - Web", imageFile: "gehan-liyanage.jpg" },
+        { name: "Gehan Liyanage", role: "Coordinator - Web", imageFile: "gehan-liyanage.png" },
         { name: "Dileepa Priyasad", role: "Coordinator - Design", imageFile: "dileepa-priyasad.jpg" },
         { name: "Sesandu Ramath", role: "Coordinator - Social Media", imageFile: "sesandu-ramath.jpg" }
       ]
