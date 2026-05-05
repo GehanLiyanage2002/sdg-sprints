@@ -26,7 +26,7 @@ export default function Header() {
           <Link to="/about" className="hover:text-white transition-colors">About</Link>
           <Link to="/goals" className="hover:text-white transition-colors">The Goals</Link>
           <Link to="/committee" className="hover:text-white transition-colors">Committee</Link> {/* <-- Add this link */}
-          <a href="#" className="hover:text-white transition-colors">Guidelines</a>
+          <Link to="/ambassadors" className="hover:text-white transition-colors">Ambassadors</Link> {/* <-- Add this link */}
         </nav>
 
         {/* CTA Button */}

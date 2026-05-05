@@ -4,7 +4,8 @@ import Footer from './components/Footer';
 import Home from './pages/HomePage';
 import GoalsPage from './pages/GoalsPage';
 import AboutPage from './pages/AboutPage';
-import CommitteePage from './pages/CommitteePage'; // <-- Add this import
+import CommitteePage from './pages/CommitteePage';
+import AmbassadorsPage from './pages/AmbassadorsPage'; // <-- Add this import
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/goals" element={<GoalsPage />} />
             <Route path="/committee" element={<CommitteePage />} /> {/* <-- Add this route */}
+            <Route path="/ambassadors" element={<AmbassadorsPage />} /> {/* <-- Add this route */}
           </Routes>
         </main>
         
