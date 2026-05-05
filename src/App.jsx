@@ -5,7 +5,8 @@ import Home from './pages/HomePage';
 import GoalsPage from './pages/GoalsPage';
 import AboutPage from './pages/AboutPage';
 import CommitteePage from './pages/CommitteePage';
-import AmbassadorsPage from './pages/AmbassadorsPage'; // <-- Add this import
+import AmbassadorsPage from './pages/AmbassadorsPage';
+import ProgramPage from './pages/ProgramPage' // <-- Add this import
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/goals" element={<GoalsPage />} />
             <Route path="/committee" element={<CommitteePage />} /> {/* <-- Add this route */}
             <Route path="/ambassadors" element={<AmbassadorsPage />} /> {/* <-- Add this route */}
+            <Route path="/program" element={<ProgramPage />} /> {/* <-- Add this route */}
           </Routes>
         </main>
         
