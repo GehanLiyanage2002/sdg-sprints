@@ -1,8 +1,11 @@
 @import "tailwindcss";
 
-/* This applies the Inter font to all Tailwind typography classes */
+@custom-variant dark (&:is(.dark, .dark *));
+
+/* This applies the Inter and Anton fonts to Tailwind */
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-display: "Anton", sans-serif;
 }
 
 /* Base styles to ensure smooth scrolling and clean text rendering */
@@ -15,4 +18,12 @@ html {
 body {
   /* Prevent horizontal scroll issues */
   overflow-x: hidden; 
+  font-family: var(--font-sans);
+}
+
+/* Apply Anton globally to main headings for a strong visual impact */
+h1, h2, h3 {
+  font-family: "Anton", sans-serif;
+  letter-spacing: 0.05em;
+  font-weight: normal; /* Anton is inherently bold, forcing font-weight: normal helps rendering */
 }

@@ -6,22 +6,23 @@ import GoalsPage from './pages/GoalsPage';
 import AboutPage from './pages/AboutPage';
 import CommitteePage from './pages/CommitteePage';
 import AmbassadorsPage from './pages/AmbassadorsPage';
-import ProgramPage from './pages/ProgramPage' // <-- Add this import
-
+import ProgramPage from './pages/ProgramPage';
+import PastSessionsPage from './pages/PastSessionsPage';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-b from-[#3a0a14] to-neutral-950 flex flex-col font-sans selection:bg-rose-500/30">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#24050b] text-slate-900 dark:text-white flex flex-col font-sans selection:bg-rose-200">
         <Header />
         
-        <main className="flex-grow">
+        <main className="relative z-10 flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/goals" element={<GoalsPage />} />
-            <Route path="/committee" element={<CommitteePage />} /> {/* <-- Add this route */}
-            <Route path="/ambassadors" element={<AmbassadorsPage />} /> {/* <-- Add this route */}
-            <Route path="/program" element={<ProgramPage />} /> {/* <-- Add this route */}
+            <Route path="/committee" element={<CommitteePage />} />
+            <Route path="/ambassadors" element={<AmbassadorsPage />} />
+            <Route path="/program" element={<ProgramPage />} />
+            <Route path="/past-sessions" element={<PastSessionsPage />} />
           </Routes>
         </main>
         
