@@ -4,7 +4,7 @@ import ieeeSightLogo from '../assets/sight-sl-logo.png';
 
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-white/5 border-t border-neutral-200 pt-16 pb-8 relative z-10">
+    <footer className="bg-white border-t border-neutral-200 pt-16 pb-8 relative z-10">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-12">
           
@@ -26,10 +26,12 @@ export default function Footer() {
           <div className="md:col-span-3 lg:col-span-3 flex flex-col items-center md:items-start">
             <h4 className="text-neutral-900 font-bold mb-6 uppercase text-sm tracking-wider">Explore</h4>
             <div className="flex flex-col gap-3 text-neutral-500 text-sm">
-              <Link to="/" className="hover:text-rose-600 dark:hover:text-rose-400 dark:text-rose-400 transition-colors">Home</Link>
-              <Link to="/about" className="hover:text-rose-600 dark:hover:text-rose-400 dark:text-rose-400 transition-colors">About the Initiative</Link>
-              <Link to="/goals" className="hover:text-rose-600 dark:hover:text-rose-400 dark:text-rose-400 transition-colors">The SDGs</Link>
-              <Link to="/program" className="hover:text-rose-600 dark:hover:text-rose-400 dark:text-rose-400 transition-colors">Program Structure</Link>
+              <Link to="/" className="hover:text-rose-600 transition-colors">Home</Link>
+              <Link to="/about" className="hover:text-rose-600 transition-colors">About the Initiative</Link>
+              <Link to="/goals" className="hover:text-rose-600 transition-colors">The SDGs</Link>
+              <Link to="/program" className="hover:text-rose-600 transition-colors">Program Structure</Link>
+              <Link to="/guidelines" className="hover:text-rose-600 transition-colors">Guidelines & Templates</Link>
+              
             </div>
           </div>
 
@@ -37,9 +39,9 @@ export default function Footer() {
           <div className="md:col-span-3 lg:col-span-3 flex flex-col items-center md:items-start">
             <h4 className="text-neutral-900 font-bold mb-6 uppercase text-sm tracking-wider">Connect</h4>
             <div className="flex flex-col gap-3 text-neutral-500 text-sm">
-              <Link to="/committee" className="hover:text-rose-600 dark:hover:text-rose-400 dark:text-rose-400 transition-colors">Organizing Committee</Link>
-              <Link to="/ambassadors" className="hover:text-rose-600 dark:hover:text-rose-400 dark:text-rose-400 transition-colors">Ambassadors</Link>
-              <Link to="/past-sessions" className="hover:text-rose-600 dark:hover:text-rose-400 dark:text-rose-400 transition-colors">Past Sessions</Link>
+              <Link to="/committee" className="hover:text-rose-600 transition-colors">Organizing Committee</Link>
+              <Link to="/ambassadors" className="hover:text-rose-600 transition-colors">Ambassadors</Link>
+              <Link to="/past-sessions" className="hover:text-rose-600 transition-colors">Past Sessions</Link>
             </div>
           </div>
 

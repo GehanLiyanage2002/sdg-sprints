@@ -8,6 +8,7 @@ import CommitteePage from './pages/CommitteePage';
 import AmbassadorsPage from './pages/AmbassadorsPage';
 import ProgramPage from './pages/ProgramPage';
 import PastSessionsPage from './pages/PastSessionsPage';
+import GuidelinesPage from './pages/GuidelinesPage';
 function App() {
   return (
     <Router>
@@ -23,6 +24,7 @@ function App() {
             <Route path="/ambassadors" element={<AmbassadorsPage />} />
             <Route path="/program" element={<ProgramPage />} />
             <Route path="/past-sessions" element={<PastSessionsPage />} />
+            <Route path="/guidelines" element={<GuidelinesPage />} />
           </Routes>
         </main>
         

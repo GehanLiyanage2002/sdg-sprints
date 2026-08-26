@@ -25,7 +25,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed w-full top-0 z-50 border-b border-black/10 dark:border-white/10 bg-white/90 dark:bg-[#24050b]/90 backdrop-blur-md">
+    <header className="fixed w-full top-0 z-50 border-b border-black/10 bg-white/90 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 
         {/* Logo Area */}
@@ -38,14 +38,16 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation - Hidden on Mobile */}
-        <nav className="hidden md:flex gap-8 text-sm font-medium text-neutral-600 dark:text-neutral-300">
-          <Link to="/" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Home</Link>
-          <Link to="/about" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">About</Link>
-          <Link to="/goals" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">The Goals</Link>
-          <Link to="/committee" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Committee</Link>
-          <Link to="/ambassadors" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Ambassadors</Link>
-          <Link to="/program" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Program</Link>
-          <Link to="/past-sessions" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Past Sessions</Link>
+        <nav className="hidden md:flex gap-8 text-sm font-medium text-neutral-600">
+          <Link to="/" className="hover:text-rose-600 transition-colors">Home</Link>
+          <Link to="/about" className="hover:text-rose-600 transition-colors">About</Link>
+          <Link to="/goals" className="hover:text-rose-600 transition-colors">The Goals</Link>
+          <Link to="/committee" className="hover:text-rose-600 transition-colors">Committee</Link>
+          <Link to="/ambassadors" className="hover:text-rose-600 transition-colors">Ambassadors</Link>
+          <Link to="/program" className="hover:text-rose-600 transition-colors">Program</Link>
+          <Link to="/past-sessions" className="hover:text-rose-600 transition-colors">Past Sessions</Link>
+          <Link to="/guidelines" className="hover:text-rose-600 transition-colors">Guidelines</Link>
+          
         </nav>
 
         {/* Right Side Actions (Button + Mobile Toggle) */}
@@ -53,7 +55,7 @@ export default function Header() {
           {/* Dark Mode Toggle */}
           <button 
             onClick={toggleDarkMode} 
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-white/10 text-neutral-600 dark:text-neutral-300 transition-colors"
+            className="p-2 rounded-full hover:bg-slate-100 text-neutral-600 transition-colors"
             aria-label="Toggle Dark Mode"
           >
             {isDarkMode ? (
@@ -76,7 +78,7 @@ export default function Header() {
 
           {/* Hamburger Menu Icon (Mobile Only) */}
           <button 
-            className="md:hidden text-neutral-600 hover:text-rose-600 dark:hover:text-rose-400 dark:text-rose-400 transition-colors p-2"
+            className="md:hidden text-neutral-600 hover:text-rose-600 transition-colors p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
@@ -96,15 +98,17 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-white dark:bg-[#1a0408] border-b border-black/10 shadow-2xl backdrop-blur-3xl animate-fade-in-down h-screen max-h-[calc(100vh-5rem)] overflow-y-auto">
+        <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-black/10 shadow-2xl backdrop-blur-3xl animate-fade-in-down h-screen max-h-[calc(100vh-5rem)] overflow-y-auto">
           <nav className="flex flex-col px-6 py-6 gap-4 text-base font-medium text-neutral-600">
-            <Link to="/" onClick={closeMobileMenu} className="hover:text-rose-600 dark:text-rose-100/80 dark:hover:text-rose-400 transition-colors block py-3 border-b border-neutral-100 dark:border-white/5">Home</Link>
-            <Link to="/about" onClick={closeMobileMenu} className="hover:text-rose-600 dark:text-rose-100/80 dark:hover:text-rose-400 transition-colors block py-3 border-b border-neutral-100 dark:border-white/5">About</Link>
-            <Link to="/goals" onClick={closeMobileMenu} className="hover:text-rose-600 dark:text-rose-100/80 dark:hover:text-rose-400 transition-colors block py-3 border-b border-neutral-100 dark:border-white/5">The Goals</Link>
-            <Link to="/committee" onClick={closeMobileMenu} className="hover:text-rose-600 dark:text-rose-100/80 dark:hover:text-rose-400 transition-colors block py-3 border-b border-neutral-100 dark:border-white/5">Committee</Link>
-            <Link to="/ambassadors" onClick={closeMobileMenu} className="hover:text-rose-600 dark:text-rose-100/80 dark:hover:text-rose-400 transition-colors block py-3 border-b border-neutral-100 dark:border-white/5">Ambassadors</Link>
-            <Link to="/program" onClick={closeMobileMenu} className="hover:text-rose-600 dark:text-rose-100/80 dark:hover:text-rose-400 transition-colors block py-3 border-b border-neutral-100 dark:border-white/5">Program</Link>
-            <Link to="/past-sessions" onClick={closeMobileMenu} className="hover:text-rose-600 dark:text-rose-100/80 dark:hover:text-rose-400 transition-colors block py-3 border-b border-neutral-100 dark:border-white/5">Past Sessions</Link>
+            <Link to="/" onClick={closeMobileMenu} className="hover:text-rose-600 transition-colors block py-3 border-b border-neutral-100">Home</Link>
+            <Link to="/about" onClick={closeMobileMenu} className="hover:text-rose-600 transition-colors block py-3 border-b border-neutral-100">About</Link>
+            <Link to="/goals" onClick={closeMobileMenu} className="hover:text-rose-600 transition-colors block py-3 border-b border-neutral-100">The Goals</Link>
+            <Link to="/committee" onClick={closeMobileMenu} className="hover:text-rose-600 transition-colors block py-3 border-b border-neutral-100">Committee</Link>
+            <Link to="/ambassadors" onClick={closeMobileMenu} className="hover:text-rose-600 transition-colors block py-3 border-b border-neutral-100">Ambassadors</Link>
+            <Link to="/program" onClick={closeMobileMenu} className="hover:text-rose-600 transition-colors block py-3 border-b border-neutral-100">Program</Link>
+            <Link to="/past-sessions" onClick={closeMobileMenu} className="hover:text-rose-600 transition-colors block py-3 border-b border-neutral-100">Past Sessions</Link>
+            <Link to="/guidelines" onClick={closeMobileMenu} className="hover:text-rose-600 transition-colors block py-3 border-b border-neutral-100">Guidelines</Link>
+            
             
             {/* Mobile Register Button */}
             <button className="mt-4 sm:hidden w-full px-5 py-3.5 rounded-xl bg-rose-600 text-white font-bold text-center hover:bg-rose-700 transition-all shadow-md">
