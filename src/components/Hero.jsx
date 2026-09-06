@@ -2,6 +2,17 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import bgVideo from '../assets/hero-bg.mp4';
 
+const TimerBlock = ({ value, label }) => (
+  <div className="flex flex-col items-center justify-center bg-white/50 dark:bg-black/30 backdrop-blur-md border border-slate-200 dark:border-white/10 rounded-xl w-16 h-16 sm:w-20 sm:h-20 shadow-inner">
+    <span className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tabular-nums">
+      {value.toString().padStart(2, '0')}
+    </span>
+    <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-rose-100/60 uppercase tracking-widest mt-1">
+      {label}
+    </span>
+  </div>
+);
+
 export default function Hero() {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -12,8 +23,8 @@ export default function Hero() {
   const [isUnlocked, setIsUnlocked] = useState(false);
 
   useEffect(() => {
-    // Target Date: September 5, 2026 at 00:00:00 Sri Lanka Time
-    const targetDate = new Date('2026-09-05T00:00:00+05:30').getTime();
+    // Target Date: September 8, 2026 at 00:00:00 Sri Lanka Time
+    const targetDate = new Date('2026-09-08T00:00:00+05:30').getTime();
 
     const updateTimer = () => {
       const now = new Date().getTime();
@@ -38,17 +49,6 @@ export default function Hero() {
 
     return () => clearInterval(timer);
   }, []);
-
-  const TimerBlock = ({ value, label }) => (
-    <div className="flex flex-col items-center justify-center bg-white/50 dark:bg-black/30 backdrop-blur-md border border-slate-200 dark:border-white/10 rounded-xl w-16 h-16 sm:w-20 sm:h-20 shadow-inner">
-      <span className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tabular-nums">
-        {value.toString().padStart(2, '0')}
-      </span>
-      <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-rose-100/60 uppercase tracking-widest mt-1">
-        {label}
-      </span>
-    </div>
-  );
 
   return (
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex items-center min-h-[90vh]">

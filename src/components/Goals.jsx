@@ -75,6 +75,7 @@ export default function Goals() {
     }
 ];
 
+  // eslint-disable-next-line no-unused-vars
   const problems = [
     {
         "sdg": "SDG 1",
@@ -331,6 +332,7 @@ export default function Goals() {
 ];
 
   const [selectedSdg, setSelectedSdg] = useState(null);
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -342,6 +344,35 @@ export default function Goals() {
     return () => { document.body.style.overflow = 'auto'; };
   }, [selectedSdg]);
 
+  // Timer logic for September 8, 2026 0:00 AM
+  useEffect(() => {
+    if (!selectedSdg) return;
+
+    // Target date: September 8, 2026, 00:00:00 Sri Lanka Time
+    const targetDate = new Date('2026-09-08T00:00:00+05:30').getTime();
+
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+
+      setTimeLeft({
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((distance % (1000 * 60)) / 1000)
+      });
+    };
+
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
+    return () => clearInterval(interval);
+  }, [selectedSdg]);
+
   // Dynamically load images from the assets folder.
   const getImageUrl = (id) => {
     const formattedId = id.toString().padStart(2, '0');
@@ -349,9 +380,6 @@ export default function Goals() {
   };
 
   const handleClose = () => setSelectedSdg(null);
-
-  // Filter problems for the currently selected SDG
-  const activeProblems = selectedSdg ? problems.filter(p => p.sdg === `SDG ${selectedSdg.id}`) : [];
 
   return (
     <section className="relative py-12">
@@ -432,42 +460,49 @@ export default function Goals() {
               </button>
             </div>
 
-            {/* Modal Body - Scrollable Problems List */}
-            <div className="p-6 md:p-8 overflow-y-auto">
-              {activeProblems.length > 0 ? (
-                <div className="space-y-6">
-                  {activeProblems.map((problem, idx) => (
-                    <div key={idx} className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl p-6 hover:bg-slate-50 dark:hover:bg-white/10 dark:bg-[#24050b] transition-colors group">
-                      <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
-                        <div className="flex items-start gap-3">
-                          <span className="flex-shrink-0 px-2 py-1 rounded-md bg-rose-500/20 text-rose-600 dark:text-rose-400 text-xs font-bold font-mono border border-rose-500/30">
-                            {problem.code}
-                          </span>
-                          <h4 className="text-xl font-bold text-slate-900 dark:text-white leading-snug group-hover:text-rose-600 dark:group-hover:text-rose-400 dark:hover:text-rose-400 dark:text-rose-400 transition-colors">
-                            {problem.title}
-                          </h4>
-                        </div>
-                        <span className="inline-flex items-center whitespace-nowrap px-3 py-1 rounded-full bg-slate-50 dark:bg-[#24050b] text-slate-600 dark:text-rose-100/70 text-xs font-medium border border-slate-100 dark:border-white/5">
-                          {problem.tag}
-                        </span>
-                      </div>
-                      <p className="text-slate-600 dark:text-rose-100/70 leading-relaxed md:ml-14">
-                        {problem.desc}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-12">
-                  <div className="w-16 h-16 mx-auto rounded-full bg-white dark:bg-white/5 flex items-center justify-center mb-4">
-                    <svg className="w-8 h-8 text-rose-600 dark:text-rose-400/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                    </svg>
+            {/* Modal Body - Countdown Timer */}
+            <div className="p-6 md:p-12 overflow-y-auto flex flex-col items-center justify-center text-center">
+              <div className="w-20 h-20 mb-6 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center">
+                <svg className="w-10 h-10 text-rose-600 dark:text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">
+                Problems Temporarily Hidden
+              </h3>
+              <p className="text-slate-600 dark:text-rose-100/70 text-lg mb-8 max-w-lg">
+                The problem pool for this SDG is currently locked. It will be revealed when the countdown ends on September 8 at 12:00 AM.
+              </p>
+              
+              <div className="flex items-center justify-center gap-4 sm:gap-6">
+                <div className="flex flex-col items-center">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-900 dark:bg-white/10 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl font-bold text-white shadow-inner">
+                    {timeLeft.days.toString().padStart(2, '0')}
                   </div>
-                  <h4 className="text-slate-900 dark:text-white font-bold text-lg mb-2">No Challenges Defined Yet</h4>
-                  <p className="text-slate-600 dark:text-rose-100/70/50">There are currently no specific problem statements listed for this SDG.</p>
+                  <span className="mt-2 text-xs sm:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Days</span>
                 </div>
-              )}
+                <div className="text-2xl sm:text-4xl font-bold text-slate-400 dark:text-slate-600 pb-6">:</div>
+                <div className="flex flex-col items-center">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-900 dark:bg-white/10 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl font-bold text-white shadow-inner">
+                    {timeLeft.hours.toString().padStart(2, '0')}
+                  </div>
+                  <span className="mt-2 text-xs sm:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Hours</span>
+                </div>
+                <div className="text-2xl sm:text-4xl font-bold text-slate-400 dark:text-slate-600 pb-6">:</div>
+                <div className="flex flex-col items-center">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-900 dark:bg-white/10 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl font-bold text-white shadow-inner">
+                    {timeLeft.minutes.toString().padStart(2, '0')}
+                  </div>
+                  <span className="mt-2 text-xs sm:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Mins</span>
+                </div>
+                <div className="text-2xl sm:text-4xl font-bold text-slate-400 dark:text-slate-600 pb-6">:</div>
+                <div className="flex flex-col items-center">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-rose-600 dark:bg-rose-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl font-bold text-white shadow-inner shadow-rose-900/50">
+                    {timeLeft.seconds.toString().padStart(2, '0')}
+                  </div>
+                  <span className="mt-2 text-xs sm:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Secs</span>
+                </div>
+              </div>
             </div>
             
             {/* Modal Footer */}
