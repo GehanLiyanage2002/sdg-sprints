@@ -500,24 +500,26 @@ export default function RegisterPage() {
                   </div>
                   
                   <div className="pl-0 sm:pl-14">
-                    <div className="h-[400px] overflow-y-auto border border-slate-200 dark:border-white/10 rounded-2xl bg-slate-50 dark:bg-black/30 p-2 sm:p-4 space-y-3 shadow-inner custom-scrollbar">
+                    <div className="h-[350px] sm:h-[400px] overscroll-contain overflow-y-auto border border-slate-200 dark:border-white/10 rounded-2xl bg-slate-50 dark:bg-black/30 p-3 sm:p-4 space-y-3 shadow-inner custom-scrollbar">
                       
                       {formData.problemsSelected.length > 0 && searchTerm === '' && (
                         <div className="mb-4 pb-4 border-b border-slate-200 dark:border-white/10">
-                          <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 px-2">Selected ({formData.problemsSelected.length})</p>
-                          <div className="space-y-2">
+                          <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 px-1">Selected ({formData.problemsSelected.length})</p>
+                          <div className="space-y-3">
                             {problems.filter(p => formData.problemsSelected.includes(p.code)).map((problem) => (
-                              <label key={`sel-${problem.code}`} className="flex items-start gap-4 p-3 bg-white dark:bg-white/10 rounded-xl cursor-pointer border border-rose-200 dark:border-rose-900/50 shadow-sm transition-all">
+                              <label key={`sel-${problem.code}`} className="flex items-start gap-3 sm:gap-4 p-4 bg-white dark:bg-white/10 rounded-2xl cursor-pointer border-2 border-rose-400 dark:border-rose-600 shadow-md transition-all">
                                 <input 
                                   type="checkbox" 
                                   checked={true}
                                   onChange={() => handleProblemToggle(problem.code)}
-                                  className="mt-0.5 w-5 h-5 text-rose-600 bg-white border-slate-300 rounded focus:ring-rose-500 focus:ring-2 cursor-pointer" 
+                                  className="mt-1 w-6 h-6 sm:w-5 sm:h-5 text-rose-600 bg-white border-rose-300 rounded focus:ring-rose-500 focus:ring-2 cursor-pointer shrink-0" 
                                 />
-                                <div className="dark:text-white text-sm flex-1">
-                                  <span className="font-bold text-rose-600 dark:text-rose-400 mr-2 bg-rose-50 dark:bg-rose-900/30 px-2 py-0.5 rounded text-xs border border-rose-100 dark:border-rose-800/50">[{problem.code}]</span>
-                                  <span className="font-semibold">{problem.title}</span> 
-                                  <span className="text-slate-500 dark:text-slate-400 text-xs ml-2">({problem.sdg})</span>
+                                <div className="dark:text-white flex-1">
+                                  <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                                    <span className="font-bold text-rose-700 dark:text-rose-300 bg-rose-100 dark:bg-rose-900/50 px-2 py-0.5 rounded text-xs border border-rose-200 dark:border-rose-800/50">[{problem.code}]</span>
+                                    <span className="text-slate-500 dark:text-slate-400 text-xs font-medium">({problem.sdg})</span>
+                                  </div>
+                                  <span className="font-bold text-slate-900 dark:text-white text-sm sm:text-base leading-snug block">{problem.title}</span> 
                                 </div>
                               </label>
                             ))}
@@ -525,25 +527,29 @@ export default function RegisterPage() {
                         </div>
                       )}
 
-                      <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 px-2 mt-2">
+                      <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 px-1 mt-2">
                         {searchTerm ? 'Search Results' : 'Available Problems'}
                       </p>
 
-                      {filteredProblems.filter(p => !formData.problemsSelected.includes(p.code)).map((problem) => (
-                        <label key={problem.code} className="flex items-start gap-4 p-3 hover:bg-white dark:hover:bg-white/10 rounded-xl cursor-pointer transition-all border border-transparent hover:border-slate-200 dark:hover:border-white/5 hover:shadow-sm">
-                          <input 
-                            type="checkbox" 
-                            checked={false}
-                            onChange={() => handleProblemToggle(problem.code)}
-                            className="mt-0.5 w-5 h-5 text-rose-600 bg-white border-slate-300 rounded focus:ring-rose-500 focus:ring-2 cursor-pointer transition-all" 
-                          />
-                          <div className="dark:text-white text-sm flex-1">
-                            <span className="font-bold text-slate-700 dark:text-slate-300 mr-2 bg-slate-200 dark:bg-white/10 px-2 py-0.5 rounded text-xs">[{problem.code}]</span>
-                            <span className="font-semibold text-slate-800 dark:text-slate-200">{problem.title}</span> 
-                            <span className="text-slate-500 dark:text-slate-400 text-xs ml-2">({problem.sdg})</span>
-                          </div>
-                        </label>
-                      ))}
+                      <div className="space-y-3">
+                        {filteredProblems.filter(p => !formData.problemsSelected.includes(p.code)).map((problem) => (
+                          <label key={problem.code} className="flex items-start gap-3 sm:gap-4 p-4 bg-white/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 rounded-2xl cursor-pointer transition-all border border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/20 hover:shadow-md">
+                            <input 
+                              type="checkbox" 
+                              checked={false}
+                              onChange={() => handleProblemToggle(problem.code)}
+                              className="mt-1 w-6 h-6 sm:w-5 sm:h-5 text-rose-600 bg-white border-slate-300 rounded focus:ring-rose-500 focus:ring-2 cursor-pointer transition-all shrink-0" 
+                            />
+                            <div className="dark:text-white flex-1">
+                              <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                                <span className="font-bold text-slate-700 dark:text-slate-300 bg-slate-200 dark:bg-white/10 px-2 py-0.5 rounded text-xs">[{problem.code}]</span>
+                                <span className="text-slate-500 dark:text-slate-400 text-xs font-medium">({problem.sdg})</span>
+                              </div>
+                              <span className="font-semibold text-slate-800 dark:text-slate-200 text-sm sm:text-base leading-snug block">{problem.title}</span> 
+                            </div>
+                          </label>
+                        ))}
+                      </div>
 
                       {filteredProblems.length === 0 && (
                         <div className="text-center py-12 text-slate-500">

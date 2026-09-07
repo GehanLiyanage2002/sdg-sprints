@@ -10,11 +10,15 @@ import ProgramPage from './pages/ProgramPage';
 import PastSessionsPage from './pages/PastSessionsPage';
 import GuidelinesPage from './pages/GuidelinesPage';
 import RegisterPage from './pages/RegisterPage';
+import ScrollToTopButton from './components/ScrollToTopButton';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-slate-50 dark:bg-[#24050b] text-slate-900 dark:text-white flex flex-col font-sans selection:bg-rose-200">
+        <ScrollToTopButton />
         <Header />
         
         <main className="relative z-10 flex-grow">

@@ -17,23 +17,30 @@ function doPost(e) {
         "IEEE Number",
         "Problems Selected",
         "Number of Members",
-        "Member 2 Details",
-        "Member 3 Details",
-        "Member 4 Details",
-        "Member 5 Details",
-        "Member 6 Details"
+        "Member 2 Name",
+        "Member 2 Email",
+        "Member 2 Phone",
+        "Member 2 IEEE Number",
+        "Member 3 Name",
+        "Member 3 Email",
+        "Member 3 Phone",
+        "Member 3 IEEE Number",
+        "Member 4 Name",
+        "Member 4 Email",
+        "Member 4 Phone",
+        "Member 4 IEEE Number",
+        "Member 5 Name",
+        "Member 5 Email",
+        "Member 5 Phone",
+        "Member 5 IEEE Number",
+        "Member 6 Name",
+        "Member 6 Email",
+        "Member 6 Phone",
+        "Member 6 IEEE Number",
+        "Agreed Principles",
+        "Agreed Code of Conduct",
+        "Agreed Commitment"
       ]);
-    }
-    
-    // Parse additional members
-    var membersData = [];
-    for (var i = 0; i < 5; i++) { // Members 2 to 6
-      if (i < data.members.length) {
-        var m = data.members[i];
-        membersData.push(m.name + " | " + m.email + " | " + m.phone + " | IEEE: " + (m.ieeeNumber || 'N/A'));
-      } else {
-        membersData.push("");
-      }
     }
 
     var row = [
@@ -46,13 +53,29 @@ function doPost(e) {
       data.ieeeMembership || "",
       data.ieeeMembershipNumber || "N/A",
       (data.problemsSelected || []).join(", "),
-      data.numMembers || "",
-      membersData[0],
-      membersData[1],
-      membersData[2],
-      membersData[3],
-      membersData[4]
+      data.numMembers || 1
     ];
+
+    // Parse additional members 2 to 6
+    for (var i = 0; i < 5; i++) { 
+      if (data.members && i < data.members.length) {
+        var m = data.members[i];
+        row.push(m.name || "");
+        row.push(m.email || "");
+        row.push(m.phone || "");
+        row.push(m.ieeeNumber || "N/A");
+      } else {
+        row.push("");
+        row.push("");
+        row.push("");
+        row.push("");
+      }
+    }
+
+    // Add declarations
+    row.push(data.agreePrinciples ? "Yes" : "No");
+    row.push(data.agreeCode ? "Yes" : "No");
+    row.push(data.agreeCommitment ? "Yes" : "No");
     
     sheet.appendRow(row);
     
