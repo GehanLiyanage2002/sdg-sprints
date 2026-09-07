@@ -21,8 +21,8 @@ export default function RegisterPage() {
   const [isUnlocked, setIsUnlocked] = useState(false);
 
   useEffect(() => {
-    // Target Date: September 8, 2026 at 00:00:00 Sri Lanka Time
-    const targetDate = new Date('2026-09-08T00:00:00+05:30').getTime();
+    // Target Date: September 9, 2026 at 00:00:00 Sri Lanka Time
+    const targetDate = new Date('2026-09-09T00:00:00+05:30').getTime();
 
     const updateTimer = () => {
       const now = new Date().getTime();
@@ -91,7 +91,7 @@ export default function RegisterPage() {
                 Registration Opens Soon
               </h3>
               <p className="text-slate-600 dark:text-rose-100/70 text-lg mb-8 max-w-lg mx-auto">
-                Registration will be unlocked when the countdown ends on September 8 at 12:00 AM.
+                Registration will be unlocked when the countdown ends on September 9 at 12:00 AM.
               </p>
               <div className="flex gap-3 sm:gap-4 justify-center">
                 <TimerBlock value={timeLeft.days} label="Days" />
