@@ -72,9 +72,9 @@ export default function Header() {
           </button>
 
           {/* CTA Button - Hidden on very small screens to save space, put inside mobile menu instead */}
-          <button className="hidden sm:block px-5 py-2.5 rounded-full bg-rose-600 text-white font-bold text-sm hover:bg-rose-700 transition-all cursor-pointer shadow-md">
+          <Link to="/register" className="hidden sm:block px-5 py-2.5 rounded-full bg-rose-600 text-white font-bold text-sm hover:bg-rose-700 transition-all shadow-md">
             Register Now
-          </button>
+          </Link>
 
           {/* Hamburger Menu Icon (Mobile Only) */}
           <button 
@@ -111,9 +111,9 @@ export default function Header() {
             
             
             {/* Mobile Register Button */}
-            <button className="mt-4 sm:hidden w-full px-5 py-3.5 rounded-xl bg-rose-600 text-white font-bold text-center hover:bg-rose-700 transition-all shadow-md">
+            <Link to="/register" onClick={closeMobileMenu} className="mt-4 sm:hidden w-full px-5 py-3.5 rounded-xl bg-rose-600 text-white font-bold text-center hover:bg-rose-700 transition-all shadow-md block">
               Register Now
-            </button>
+            </Link>
           </nav>
         </div>
       )}

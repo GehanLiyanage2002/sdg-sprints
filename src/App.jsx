@@ -9,6 +9,8 @@ import AmbassadorsPage from './pages/AmbassadorsPage';
 import ProgramPage from './pages/ProgramPage';
 import PastSessionsPage from './pages/PastSessionsPage';
 import GuidelinesPage from './pages/GuidelinesPage';
+import RegisterPage from './pages/RegisterPage';
+
 function App() {
   return (
     <Router>
@@ -25,6 +27,7 @@ function App() {
             <Route path="/program" element={<ProgramPage />} />
             <Route path="/past-sessions" element={<PastSessionsPage />} />
             <Route path="/guidelines" element={<GuidelinesPage />} />
+            <Route path="/register" element={<RegisterPage />} />
           </Routes>
         </main>
         
