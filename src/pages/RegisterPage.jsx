@@ -502,7 +502,7 @@ export default function RegisterPage() {
                   <div className="pl-0 sm:pl-14">
                     <div className="h-[350px] sm:h-[400px] overscroll-contain overflow-y-auto border border-slate-200 dark:border-white/10 rounded-2xl bg-slate-50 dark:bg-black/30 p-3 sm:p-4 space-y-3 shadow-inner custom-scrollbar">
                       
-                      {formData.problemsSelected.length > 0 && searchTerm === '' && (
+                      {formData.problemsSelected.length > 0 && (
                         <div className="mb-4 pb-4 border-b border-slate-200 dark:border-white/10">
                           <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 px-1">Selected ({formData.problemsSelected.length})</p>
                           <div className="space-y-3">
