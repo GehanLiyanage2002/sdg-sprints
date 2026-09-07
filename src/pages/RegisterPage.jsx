@@ -33,7 +33,7 @@ const initialFormData = {
 
 export default function RegisterPage() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [isUnlocked, setIsUnlocked] = useState(true); // Temporarily unlocked
+  const [isUnlocked, setIsUnlocked] = useState(false); // Temporarily unlocked
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
@@ -156,6 +156,11 @@ export default function RegisterPage() {
         setSubmitError(`Please enter a valid Contact Number for Member ${i + 2}.`);
         return;
       }
+    }
+
+    if (!formData.agreePrinciples || !formData.agreeCode || !formData.agreeCommitment) {
+      setSubmitError('You must agree to all declarations before submitting.');
+      return;
     }
 
     setIsSubmitting(true);
@@ -327,7 +332,7 @@ export default function RegisterPage() {
                 </div>
                 <h3 className="text-3xl md:text-4xl font-black text-slate-800 dark:text-white mb-4 tracking-tight">Application Received!</h3>
                 <p className="text-lg text-slate-600 dark:text-slate-300 max-w-md mx-auto mb-8 leading-relaxed">
-                  Thank you for registering for the SDG Solutions Challenge 2026. A confirmation email with your onboarding details will be sent to the team leader shortly.
+                  Thank you for registering for the SDG Solutions Challenge 2026. We will review your application and be in touch with your next steps soon.
                 </p>
                 <button onClick={() => window.location.reload()} className="px-8 py-3 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-700 dark:text-white font-bold rounded-xl transition-colors">
                   Submit Another Team

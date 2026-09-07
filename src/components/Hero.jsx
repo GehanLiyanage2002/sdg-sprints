@@ -20,7 +20,7 @@ export default function Hero() {
     minutes: 0,
     seconds: 0,
   });
-  const [isUnlocked, setIsUnlocked] = useState(true); // Temporarily unlocked
+  const [isUnlocked, setIsUnlocked] = useState(false);
 
   useEffect(() => {
     // Target Date: September 8, 2026 at 00:00:00 Sri Lanka Time

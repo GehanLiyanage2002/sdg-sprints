@@ -333,7 +333,7 @@ export default function Goals() {
 
   const [selectedSdg, setSelectedSdg] = useState(null);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [isUnlocked, setIsUnlocked] = useState(true); // Temporarily unlockedl when modal is open
+  const [isUnlocked, setIsUnlocked] = useState(false);
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -356,7 +356,8 @@ export default function Goals() {
       const now = new Date().getTime();
       const distance = targetDate - now;
 
-      if (distance < 0) {
+      if (distance <= 0) {
+        setIsUnlocked(true);
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         return;
       }
