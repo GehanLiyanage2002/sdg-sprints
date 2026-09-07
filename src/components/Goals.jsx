@@ -333,6 +333,7 @@ export default function Goals() {
 
   const [selectedSdg, setSelectedSdg] = useState(null);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [isUnlocked, setIsUnlocked] = useState(true); // Temporarily unlockedl when modal is open
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -460,49 +461,74 @@ export default function Goals() {
               </button>
             </div>
 
-            {/* Modal Body - Countdown Timer */}
+            {/* Modal Body */}
             <div className="p-6 md:p-12 overflow-y-auto flex flex-col items-center justify-center text-center">
-              <div className="w-20 h-20 mb-6 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center">
-                <svg className="w-10 h-10 text-rose-600 dark:text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">
-                Problems Temporarily Hidden
-              </h3>
-              <p className="text-slate-600 dark:text-rose-100/70 text-lg mb-8 max-w-lg">
-                The problem pool for this SDG is currently locked. It will be revealed when the countdown ends on September 8 at 12:00 AM.
-              </p>
-              
-              <div className="flex items-center justify-center gap-4 sm:gap-6">
-                <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-900 dark:bg-white/10 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl font-bold text-white shadow-inner">
-                    {timeLeft.days.toString().padStart(2, '0')}
+              {!isUnlocked ? (
+                <>
+                  <div className="w-20 h-20 mb-6 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center">
+                    <svg className="w-10 h-10 text-rose-600 dark:text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                   </div>
-                  <span className="mt-2 text-xs sm:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Days</span>
-                </div>
-                <div className="text-2xl sm:text-4xl font-bold text-slate-400 dark:text-slate-600 pb-6">:</div>
-                <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-900 dark:bg-white/10 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl font-bold text-white shadow-inner">
-                    {timeLeft.hours.toString().padStart(2, '0')}
+                  <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">
+                    Problems Temporarily Hidden
+                  </h3>
+                  <p className="text-slate-600 dark:text-rose-100/70 text-lg mb-8 max-w-lg">
+                    The problem pool for this SDG is currently locked. It will be revealed when the countdown ends on September 8 at 12:00 AM.
+                  </p>
+                  
+                  <div className="flex items-center justify-center gap-4 sm:gap-6">
+                    <div className="flex flex-col items-center">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-900 dark:bg-white/10 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl font-bold text-white shadow-inner">
+                        {timeLeft.days.toString().padStart(2, '0')}
+                      </div>
+                      <span className="mt-2 text-xs sm:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Days</span>
+                    </div>
+                    <div className="text-2xl sm:text-4xl font-bold text-slate-400 dark:text-slate-600 pb-6">:</div>
+                    <div className="flex flex-col items-center">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-900 dark:bg-white/10 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl font-bold text-white shadow-inner">
+                        {timeLeft.hours.toString().padStart(2, '0')}
+                      </div>
+                      <span className="mt-2 text-xs sm:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Hours</span>
+                    </div>
+                    <div className="text-2xl sm:text-4xl font-bold text-slate-400 dark:text-slate-600 pb-6">:</div>
+                    <div className="flex flex-col items-center">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-900 dark:bg-white/10 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl font-bold text-white shadow-inner">
+                        {timeLeft.minutes.toString().padStart(2, '0')}
+                      </div>
+                      <span className="mt-2 text-xs sm:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Mins</span>
+                    </div>
+                    <div className="text-2xl sm:text-4xl font-bold text-slate-400 dark:text-slate-600 pb-6">:</div>
+                    <div className="flex flex-col items-center">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-rose-600 dark:bg-rose-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl font-bold text-white shadow-inner shadow-rose-900/50">
+                        {timeLeft.seconds.toString().padStart(2, '0')}
+                      </div>
+                      <span className="mt-2 text-xs sm:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Secs</span>
+                    </div>
                   </div>
-                  <span className="mt-2 text-xs sm:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Hours</span>
-                </div>
-                <div className="text-2xl sm:text-4xl font-bold text-slate-400 dark:text-slate-600 pb-6">:</div>
-                <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-900 dark:bg-white/10 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl font-bold text-white shadow-inner">
-                    {timeLeft.minutes.toString().padStart(2, '0')}
+                </>
+              ) : (
+                <div className="w-full text-left space-y-4">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">Available Problems</h3>
+                  <div className="space-y-4">
+                    {problems.filter(p => p.sdg === `SDG ${selectedSdg.id}`).map(problem => (
+                      <div key={problem.code} className="bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl">
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 font-bold px-2 py-1 rounded text-sm">[{problem.code}]</span>
+                          <h4 className="font-bold text-slate-800 dark:text-white text-lg">{problem.title}</h4>
+                        </div>
+                        <p className="text-slate-600 dark:text-rose-100/70 text-sm">{problem.desc}</p>
+                        <div className="mt-3 inline-block bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-slate-300 text-xs px-2 py-1 rounded-md font-medium">
+                          {problem.tag}
+                        </div>
+                      </div>
+                    ))}
+                    {problems.filter(p => p.sdg === `SDG ${selectedSdg.id}`).length === 0 && (
+                      <p className="text-slate-500 italic text-center py-4">No specific problems listed for this SDG yet.</p>
+                    )}
                   </div>
-                  <span className="mt-2 text-xs sm:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Mins</span>
                 </div>
-                <div className="text-2xl sm:text-4xl font-bold text-slate-400 dark:text-slate-600 pb-6">:</div>
-                <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-rose-600 dark:bg-rose-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl font-bold text-white shadow-inner shadow-rose-900/50">
-                    {timeLeft.seconds.toString().padStart(2, '0')}
-                  </div>
-                  <span className="mt-2 text-xs sm:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Secs</span>
-                </div>
-              </div>
+              )}
             </div>
             
             {/* Modal Footer */}
