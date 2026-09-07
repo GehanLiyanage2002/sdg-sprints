@@ -40,6 +40,7 @@ export default function RegisterPage() {
 
   const [formData, setFormData] = useState(initialFormData);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isMobileInfoOpen, setIsMobileInfoOpen] = useState(false);
 
   useEffect(() => {
     const targetDate = new Date('2026-09-09T00:00:00+05:30').getTime();
@@ -215,19 +216,29 @@ export default function RegisterPage() {
         <div className="w-full lg:w-4/12 flex flex-col gap-6">
           <div className="bg-white dark:bg-[#1a0408] border border-slate-200 dark:border-white/10 rounded-3xl p-8 shadow-xl lg:sticky lg:top-32">
             
-            <div className="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100 dark:border-white/5">
-              <div className="w-12 h-12 bg-rose-100 dark:bg-rose-900/30 rounded-2xl flex items-center justify-center text-rose-600">
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <div className="flex items-center justify-between mb-4 lg:mb-6 pb-4 lg:pb-6 border-b border-slate-100 dark:border-white/5">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-rose-100 dark:bg-rose-900/30 rounded-2xl flex items-center justify-center text-rose-600 shrink-0">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold text-slate-900 dark:text-white leading-tight">Challenge Overview</h2>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Organized by IEEE SIGHT</p>
+                </div>
+              </div>
+              <button 
+                onClick={() => setIsMobileInfoOpen(!isMobileInfoOpen)}
+                className="lg:hidden p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors"
+              >
+                <svg className={`w-5 h-5 transition-transform duration-300 ${isMobileInfoOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                 </svg>
-              </div>
-              <div>
-                <h2 className="text-xl font-bold text-slate-900 dark:text-white">Challenge Overview</h2>
-                <p className="text-sm text-slate-500 dark:text-slate-400">Organized by IEEE SIGHT</p>
-              </div>
+              </button>
             </div>
 
-            <div className="space-y-8">
+            <div className={`space-y-8 overflow-hidden transition-all duration-300 ${isMobileInfoOpen ? 'max-h-[1000px] opacity-100 mt-4' : 'max-h-0 opacity-0 lg:max-h-[1000px] lg:opacity-100 lg:mt-0'}`}>
               {/* Timeline / Deadlines */}
               <div className="bg-slate-50 dark:bg-white/5 rounded-2xl p-5 border border-slate-100 dark:border-white/5">
                 <div className="flex items-start gap-3">
@@ -326,7 +337,7 @@ export default function RegisterPage() {
               <form onSubmit={handleSubmit} className="space-y-6 text-left animate-fade-in relative">
                 
                 {/* 1. Team Basics */}
-                <div className="bg-white dark:bg-[#1a0408] border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-10 shadow-lg shadow-slate-200/50 dark:shadow-none transition-all hover:shadow-xl">
+                <div className="bg-white dark:bg-[#1a0408] border border-slate-200 dark:border-white/10 rounded-3xl p-5 sm:p-8 lg:p-10 shadow-lg shadow-slate-200/50 dark:shadow-none transition-all hover:shadow-xl">
                   <div className="flex items-center gap-4 mb-6 border-b border-slate-100 dark:border-white/5 pb-4">
                     <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-600 dark:text-rose-400 flex items-center justify-center font-bold text-lg">1</div>
                     <h3 className="text-2xl font-bold text-slate-800 dark:text-white">Team Setup</h3>
@@ -345,7 +356,7 @@ export default function RegisterPage() {
                 </div>
 
                 {/* 2. Team Leader */}
-                <div className="bg-white dark:bg-[#1a0408] border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-10 shadow-lg shadow-slate-200/50 dark:shadow-none transition-all hover:shadow-xl">
+                <div className="bg-white dark:bg-[#1a0408] border border-slate-200 dark:border-white/10 rounded-3xl p-5 sm:p-8 lg:p-10 shadow-lg shadow-slate-200/50 dark:shadow-none transition-all hover:shadow-xl">
                   <div className="flex items-center gap-4 mb-6 border-b border-slate-100 dark:border-white/5 pb-4">
                     <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-600 dark:text-rose-400 flex items-center justify-center font-bold text-lg">2</div>
                     <h3 className="text-2xl font-bold text-slate-800 dark:text-white">Team Leader</h3>
@@ -395,7 +406,7 @@ export default function RegisterPage() {
                 </div>
 
                 {/* 3. Additional Members */}
-                <div className="bg-white dark:bg-[#1a0408] border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-10 shadow-lg shadow-slate-200/50 dark:shadow-none transition-all hover:shadow-xl">
+                <div className="bg-white dark:bg-[#1a0408] border border-slate-200 dark:border-white/10 rounded-3xl p-5 sm:p-8 lg:p-10 shadow-lg shadow-slate-200/50 dark:shadow-none transition-all hover:shadow-xl">
                   <div className="flex items-center justify-between gap-4 mb-6 border-b border-slate-100 dark:border-white/5 pb-4">
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-600 dark:text-rose-400 flex items-center justify-center font-bold text-lg">3</div>
@@ -465,7 +476,7 @@ export default function RegisterPage() {
                 </div>
 
                 {/* 4. Problem Pool */}
-                <div id="problem-pool-section" className="bg-white dark:bg-[#1a0408] border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-10 shadow-lg shadow-slate-200/50 dark:shadow-none transition-all hover:shadow-xl scroll-mt-32">
+                <div id="problem-pool-section" className="bg-white dark:bg-[#1a0408] border border-slate-200 dark:border-white/10 rounded-3xl p-5 sm:p-8 lg:p-10 shadow-lg shadow-slate-200/50 dark:shadow-none transition-all hover:shadow-xl scroll-mt-32">
                   <div className="flex items-center gap-4 mb-2">
                     <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-600 dark:text-rose-400 flex items-center justify-center font-bold text-lg">4</div>
                     <h3 className="text-2xl font-bold text-slate-800 dark:text-white">Problem Pool</h3>
@@ -545,7 +556,7 @@ export default function RegisterPage() {
                 </div>
 
                 {/* 5. Declarations */}
-                <div className="bg-white dark:bg-[#1a0408] border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-10 shadow-lg shadow-slate-200/50 dark:shadow-none transition-all hover:shadow-xl">
+                <div className="bg-white dark:bg-[#1a0408] border border-slate-200 dark:border-white/10 rounded-3xl p-5 sm:p-8 lg:p-10 shadow-lg shadow-slate-200/50 dark:shadow-none transition-all hover:shadow-xl">
                   <div className="flex items-center gap-4 mb-6 border-b border-slate-100 dark:border-white/5 pb-4">
                     <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-600 dark:text-rose-400 flex items-center justify-center font-bold text-lg">5</div>
                     <h3 className="text-2xl font-bold text-slate-800 dark:text-white">Declarations</h3>
@@ -589,7 +600,7 @@ export default function RegisterPage() {
                 )}
 
                 {/* Submit Area */}
-                <div className="sticky bottom-6 z-20 bg-white/80 dark:bg-[#1a0408]/90 backdrop-blur-md p-6 rounded-3xl border border-slate-200 dark:border-white/10 shadow-2xl flex flex-col sm:flex-row gap-4 items-center justify-between">
+                <div className="relative sm:sticky sm:bottom-6 z-20 bg-white/80 dark:bg-[#1a0408]/90 backdrop-blur-md p-5 sm:p-6 rounded-3xl border border-slate-200 dark:border-white/10 shadow-2xl flex flex-col sm:flex-row gap-4 items-center justify-between mt-4">
                   <button
                     type="button"
                     onClick={handleReset}
