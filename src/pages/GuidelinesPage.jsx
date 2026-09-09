@@ -1,4 +1,5 @@
 import React from 'react';
+import handbookPdf from '../assets/SDG Solutions Challenge 2026 Handbook.docx.pdf';
 
 export default function GuidelinesPage() {
   const documents = [
@@ -17,7 +18,7 @@ export default function GuidelinesPage() {
     },
     {
       id: 2,
-      title: 'Competition Rulebook & Guidelines',
+      title: 'SDG Solutions Challenge 2026 – Official Contestant Handbook & Guidelines',
       description: 'Comprehensive guide covering eligibility criteria, evaluation rubrics, submission deadlines, and code of conduct for all participating teams.',
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -26,7 +27,8 @@ export default function GuidelinesPage() {
       ),
       type: 'PDF',
       size: '1.2 MB',
-      available: false
+      available: true,
+      href: handbookPdf
     },
     {
       id: 3,
@@ -101,12 +103,12 @@ export default function GuidelinesPage() {
                 </div>
                 
                 {doc.available ? (
-                  <button className="w-full py-3.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold hover:bg-rose-600 dark:hover:bg-rose-500 hover:text-white transition-colors flex items-center justify-center gap-2">
+                  <a href={doc.href} download className="w-full py-3.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold hover:bg-rose-600 dark:hover:bg-rose-500 hover:text-white transition-colors flex items-center justify-center gap-2">
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </svg>
                     Download File
-                  </button>
+                  </a>
                 ) : (
                   <button disabled className="w-full py-3.5 rounded-xl bg-slate-100 dark:bg-white/5 text-slate-400 dark:text-white/30 font-bold border border-slate-200 dark:border-white/5 flex items-center justify-center gap-2 cursor-not-allowed">
                     <svg className="w-5 h-5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
