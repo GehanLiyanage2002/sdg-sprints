@@ -5,19 +5,6 @@ export default function GuidelinesPage() {
   const documents = [
     {
       id: 1,
-      title: 'Project Proposal Template',
-      description: 'The official template for submitting your initial SDG humanitarian technology project idea. Includes sections for problem statement, proposed solution, and target UN SDGs.',
-      icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-      ),
-      type: 'DOCX',
-      size: '24 KB',
-      available: false
-    },
-    {
-      id: 2,
       title: 'SDG Solutions Challenge 2026 – Official Contestant Handbook & Guidelines',
       description: 'Comprehensive guide covering eligibility criteria, evaluation rubrics, submission deadlines, and code of conduct for all participating teams.',
       icon: (
@@ -29,6 +16,19 @@ export default function GuidelinesPage() {
       size: '1.2 MB',
       available: true,
       href: handbookPdf
+    },
+    {
+      id: 2,
+      title: 'Project Proposal Template',
+      description: 'The official template for submitting your initial SDG humanitarian technology project idea. Includes sections for problem statement, proposed solution, and target UN SDGs.',
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      ),
+      type: 'DOCX',
+      size: '24 KB',
+      available: false
     },
     {
       id: 3,
@@ -70,9 +70,9 @@ export default function GuidelinesPage() {
             </svg>
           </div>
           <div>
-            <h3 className="font-bold text-slate-900 dark:text-white mb-1">Documents in Development</h3>
+            <h3 className="font-bold text-slate-900 dark:text-white mb-1">Handbook Available Now</h3>
             <p className="text-slate-600 dark:text-rose-100/80 text-sm leading-relaxed">
-              The official guidelines and templates are currently being finalized by the organizing committee. They will be available for download on this page shortly before the problem pool unlocks.
+              The Official Contestant Handbook & Guidelines is available now. Other documents will be uploaded later or are still in development.
             </p>
           </div>
         </div>
