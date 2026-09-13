@@ -1,16 +1,6 @@
 import { useState, useEffect } from 'react';
 import { problems } from '../data/problems';
 
-const TimerBlock = ({ value, label }) => (
-  <div className="flex flex-col items-center justify-center bg-slate-50 dark:bg-black/30 backdrop-blur-md border border-slate-200 dark:border-white/10 rounded-xl w-16 h-16 sm:w-20 sm:h-20 shadow-inner">
-    <span className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tabular-nums">
-      {value.toString().padStart(2, '0')}
-    </span>
-    <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-rose-100/60 uppercase tracking-widest mt-1">
-      {label}
-    </span>
-  </div>
-);
 
 // REPLACE THIS URL with your deployed Google Apps Script Web App URL
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbww1D_GGiC5B8zVLeXs8zwZQHgpVHhzMqFJimF6BC62kmtXMcqEX3Vrp9lgNe_vn4YEew/exec"; 
@@ -33,7 +23,7 @@ const initialFormData = {
 
 export default function RegisterPage() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [isUnlocked, setIsUnlocked] = useState(false); // Temporarily unlocked
+  const [isClosed, setIsClosed] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
@@ -43,18 +33,19 @@ export default function RegisterPage() {
   const [isMobileInfoOpen, setIsMobileInfoOpen] = useState(false);
 
   useEffect(() => {
-    const targetDate = new Date('2026-09-09T00:00:00+05:30').getTime();
+    const targetDate = new Date('2026-09-30T23:59:59+05:30').getTime();
 
     const updateTimer = () => {
       const now = new Date().getTime();
       const distance = targetDate - now;
 
       if (distance <= 0) {
-        setIsUnlocked(true);
+        setIsClosed(true);
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         return;
       }
 
+      setIsClosed(false);
       setTimeLeft({
         days: Math.floor(distance / (1000 * 60 * 60 * 24)),
         hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
@@ -255,9 +246,34 @@ export default function RegisterPage() {
                   </div>
                   <div>
                     <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Registration Closes</p>
-                    <p className="text-lg font-black text-slate-900 dark:text-white">30th September 2026</p>
+                    <p className="text-lg font-black text-slate-900 dark:text-white">30th September 2026, 11:59 PM</p>
                   </div>
                 </div>
+                
+                {/* Countdown Timer */}
+                {!isClosed && (
+                  <div className="mt-4 pt-4 border-t border-slate-200 dark:border-white/10">
+                    <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">Time Remaining</p>
+                    <div className="flex gap-2 justify-between">
+                      <div className="flex flex-col items-center justify-center bg-white dark:bg-black/30 border border-slate-200 dark:border-white/10 rounded-lg p-2 flex-1 shadow-sm">
+                        <span className="text-lg font-black text-slate-900 dark:text-white tabular-nums">{timeLeft.days.toString().padStart(2, '0')}</span>
+                        <span className="text-[9px] font-bold text-slate-500 uppercase">Days</span>
+                      </div>
+                      <div className="flex flex-col items-center justify-center bg-white dark:bg-black/30 border border-slate-200 dark:border-white/10 rounded-lg p-2 flex-1 shadow-sm">
+                        <span className="text-lg font-black text-slate-900 dark:text-white tabular-nums">{timeLeft.hours.toString().padStart(2, '0')}</span>
+                        <span className="text-[9px] font-bold text-slate-500 uppercase">Hrs</span>
+                      </div>
+                      <div className="flex flex-col items-center justify-center bg-white dark:bg-black/30 border border-slate-200 dark:border-white/10 rounded-lg p-2 flex-1 shadow-sm">
+                        <span className="text-lg font-black text-slate-900 dark:text-white tabular-nums">{timeLeft.minutes.toString().padStart(2, '0')}</span>
+                        <span className="text-[9px] font-bold text-slate-500 uppercase">Mins</span>
+                      </div>
+                      <div className="flex flex-col items-center justify-center bg-white dark:bg-black/30 border border-slate-200 dark:border-white/10 rounded-lg p-2 flex-1 shadow-sm">
+                        <span className="text-lg font-black text-slate-900 dark:text-white tabular-nums">{timeLeft.seconds.toString().padStart(2, '0')}</span>
+                        <span className="text-[9px] font-bold text-slate-500 uppercase">Secs</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Guidelines list */}
@@ -324,7 +340,7 @@ export default function RegisterPage() {
 
         {/* Right Column: The Form */}
         <div className="w-full lg:w-8/12">
-          {isUnlocked ? (
+          {!isClosed ? (
             submitSuccess ? (
               <div className="bg-white dark:bg-[#1a0408] border border-green-200 dark:border-green-900/50 rounded-3xl p-10 sm:p-16 shadow-2xl text-center animate-fade-in">
                 <div className="w-24 h-24 bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner ring-8 ring-green-50 dark:ring-green-900/20">
@@ -652,17 +668,11 @@ export default function RegisterPage() {
                 </svg>
               </div>
               <h3 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">
-                Registration Locked
+                Registration Closed
               </h3>
               <p className="text-slate-600 dark:text-rose-100/70 text-lg md:text-xl mb-12 max-w-lg mx-auto leading-relaxed">
-                The registration portal will automatically unlock when the countdown ends on <strong className="text-rose-600 dark:text-rose-400 whitespace-nowrap">September 9 at 12:00 AM</strong>.
+                The registration period for the SDG Solutions Challenge 2026 ended on <strong className="text-rose-600 dark:text-rose-400 whitespace-nowrap">September 30th, 2026</strong>. Thank you for your interest!
               </p>
-              <div className="flex gap-4 sm:gap-8 justify-center">
-                <TimerBlock value={timeLeft.days} label="Days" />
-                <TimerBlock value={timeLeft.hours} label="Hours" />
-                <TimerBlock value={timeLeft.minutes} label="Mins" />
-                <TimerBlock value={timeLeft.seconds} label="Secs" />
-              </div>
             </div>
           )}
         </div>

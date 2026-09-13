@@ -72,7 +72,7 @@ export default function GuidelinesPage() {
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white mb-1">Handbook Available Now</h3>
             <p className="text-slate-600 dark:text-rose-100/80 text-sm leading-relaxed">
-              The Official Contestant Handbook & Guidelines is available now. Other documents will be uploaded later or are still in development.
+              The Official Contestant Handbook & Guidelines is available now. Other requirement documents, forms, and templates will be updated in due course.
             </p>
           </div>
         </div>
