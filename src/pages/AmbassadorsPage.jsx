@@ -2,6 +2,8 @@ export default function AmbassadorsPage() {
   // Extracted directly from your image. 
   // IMPORTANT: Update the 'university' fields with the actual university names!
   const ambassadors = [
+    { name: "Hirusha Somarathna", university: "SLTC", imageFile: "hirusha.jpeg" },
+    { name: "Suhada Basuru", university: "RUSL", imageFile: "basuru.jpeg" },
     { name: "Ravishka Rathnayake", university: "SLTC", imageFile: "IMG_8747 - Ravishka Rathnayaka.jpeg" },
     { name: "Jithmi Wickramasinghe", university: "Sabaragamuwa University of Sri Lanka", imageFile: "Jithmi_Wickramasinghe - Jithmi Wickramasinghe.jpg" },
     { name: "Chamod Chandupa", university: "University of Sri Jayawardenepura", imageFile: "Chamod - Chamod Chandupa.png" },
