@@ -3,15 +3,13 @@ export default function AmbassadorsPage() {
   // IMPORTANT: Update the 'university' fields with the actual university names!
   const ambassadors = [
     { name: "Hirusha Somarathna", university: "SLTC", imageFile: "hirusha.jpeg" },
-    { name: "Suhada Basuru", university: "RUSL", imageFile: "basuru.jpeg" },
-    { name: "Ravishka Rathnayake", university: "SLTC", imageFile: "IMG_8747 - Ravishka Rathnayaka.jpeg" },
+    { name: "Suhada Basuru", university: "Rajarata University of Sri Lanka", imageFile: "basuru.jpeg" },
     { name: "Jithmi Wickramasinghe", university: "Sabaragamuwa University of Sri Lanka", imageFile: "Jithmi_Wickramasinghe - Jithmi Wickramasinghe.jpg" },
     { name: "Chamod Chandupa", university: "University of Sri Jayawardenepura", imageFile: "Chamod - Chamod Chandupa.png" },
     { name: "Dilan Manusha", university: "NSBM", imageFile: "IMG-20260210-WA0011 - Dilan Manusha.jpg" },
     { name: "Sadithma Dulakdi Samarasinghe", university: "KDU", imageFile: "IMG_8907 - sadithma dulakdi.jpeg" },
     { name: "Thisarani Wijesinghe", university: "Open University of Sri Lanka", imageFile: "IMG_20260421_140901 - Thisarani Nirupama Wijesinghe.jpg" },
     { name: "Nayomi Amarasekara", university: "Wayamba University of Sri Lanka", imageFile: "Nayomi Pavithra_232007 - Nayomi Pavithra.jpg" },
-    { name: "Pamodha Vikum Wanasinghe", university: "Rajarata University of Sri Lanka", imageFile: "file_00000000c7587208a40377cc594f9c06 - pamodha vikum wanasinghe.png" },
     { name: "Subodha Tharuka", university: "University of Ruhuna", imageFile: "my - Subodha Tharuka.jpeg" },
     { name: "Udana Isiwari", university: "University of Peradeniya", imageFile: "IMG-20250821-WA0006(1) - udana isiwari.jpg" },
     { name: "Malshi Navodya", university: "Uva Wellassa University", imageFile: "Malshi Navodya - CST23029 K.M. Navodya.jpg" },
