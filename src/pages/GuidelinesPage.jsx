@@ -1,5 +1,6 @@
 import React from 'react';
 import handbookPdf from '../assets/SDG Solutions Challenge 2026 Handbook.docx.pdf';
+import problemValidationDoc from '../assets/Problem Validation Submission Template.docx';
 
 export default function GuidelinesPage() {
   const documents = [
@@ -9,7 +10,7 @@ export default function GuidelinesPage() {
       description: 'Comprehensive guide covering eligibility criteria, evaluation rubrics, submission deadlines, and code of conduct for all participating teams.',
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477-4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
       ),
       type: 'PDF',
@@ -42,6 +43,21 @@ export default function GuidelinesPage() {
       type: 'PPTX',
       size: '5.4 MB',
       available: false
+    },
+    {
+      id: 4,
+      title: 'Problem Validation Submission Template',
+      description: 'The template for submitting your problem validation. Includes sections for problem analysis, user research, and validation methodology.',
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      ),
+      type: 'DOCX',
+      size: '28 KB',
+      available: true,
+      href: problemValidationDoc,
+      visibleAfter: new Date('2026-10-02T23:59:00+05:30')
     }
   ];
 
@@ -79,7 +95,9 @@ export default function GuidelinesPage() {
 
         {/* Documents Grid */}
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-          {documents.map((doc) => (
+          {documents
+            .filter(doc => !doc.visibleAfter || new Date() > doc.visibleAfter)
+            .map((doc) => (
             <div 
               key={doc.id}
               className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:shadow-xl hover:border-rose-300 dark:hover:border-rose-500/50 transition-all duration-300 group"
