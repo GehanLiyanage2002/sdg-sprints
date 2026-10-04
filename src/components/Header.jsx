@@ -25,43 +25,46 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed w-full top-0 z-50 border-b border-black/10 dark:border-white/10 bg-white/90 dark:bg-[#0f0205]/90 backdrop-blur-md transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 lg:px-6 h-20 flex items-center justify-between">
+    <header className="fixed w-full top-0 z-50 border-b border-black/10 bg-white/90 backdrop-blur-md">
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 
         {/* Logo Area */}
-        <Link to="/" className="flex items-center shrink-0 hover:opacity-80 transition-opacity mr-4" onClick={closeMobileMenu}>
+        <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity" onClick={closeMobileMenu}>
           <img
             src={sdgLogo}
             alt="SDG Sprints Logo"
-            className="h-14 md:h-16 lg:h-16 w-auto object-contain drop-shadow-sm dark:brightness-110"
+            className="h-16 md:h-20 w-auto object-contain py-2"
           />
         </Link>
 
-        {/* Desktop Navigation - Hidden on Mobile/Tablet */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-7 text-[13px] xl:text-sm font-semibold text-slate-600 dark:text-slate-300">
-          <Link to="/" className="whitespace-nowrap hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Home</Link>
-          <Link to="/about" className="whitespace-nowrap hover:text-rose-600 dark:hover:text-rose-400 transition-colors">About</Link>
-          <Link to="/goals" className="whitespace-nowrap hover:text-rose-600 dark:hover:text-rose-400 transition-colors">The Goals</Link>
-          <Link to="/committee" className="whitespace-nowrap hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Committee</Link>
-          <Link to="/ambassadors" className="whitespace-nowrap hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Ambassadors</Link>
-          <Link to="/program" className="whitespace-nowrap hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Program</Link>
-          <Link to="/past-sessions" className="whitespace-nowrap hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Past Sessions</Link>
-          <Link to="/guidelines" className="whitespace-nowrap hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Guidelines</Link>
+        {/* Desktop Navigation - Hidden on Mobile */}
+        <nav className="hidden md:flex gap-8 text-sm font-medium text-neutral-600">
+          <Link to="/" className="hover:text-rose-600 transition-colors">Home</Link>
+          <Link to="/about" className="hover:text-rose-600 transition-colors">About</Link>
+          <Link to="/goals" className="hover:text-rose-600 transition-colors">The Goals</Link>
+          <Link to="/committee" className="hover:text-rose-600 transition-colors">Committee</Link>
+          <Link to="/ambassadors" className="hover:text-rose-600 transition-colors">Ambassadors</Link>
+          <Link to="/program" className="hover:text-rose-600 transition-colors">Program</Link>
+          <Link to="/past-sessions" className="hover:text-rose-600 transition-colors">Past Sessions</Link>
+          <Link to="/guidelines" className="hover:text-rose-600 transition-colors">Guidelines</Link>
+          
         </nav>
 
         {/* Right Side Actions (Button + Mobile Toggle) */}
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-4">
           {/* Dark Mode Toggle */}
           <button 
             onClick={toggleDarkMode} 
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-white/10 text-neutral-600 dark:text-neutral-300 transition-colors"
+            className="p-2 rounded-full hover:bg-slate-100 text-neutral-600 transition-colors"
             aria-label="Toggle Dark Mode"
           >
             {isDarkMode ? (
+              // Sun icon for Light Mode
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
             ) : (
+              // Moon icon for Dark Mode
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
               </svg>
@@ -69,21 +72,24 @@ export default function Header() {
           </button>
 
           {/* CTA Button - Hidden on very small screens to save space, put inside mobile menu instead */}
-          <Link to="/register" className="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-            Submission Portal
+          <Link to="/register" className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-rose-50 dark:bg-rose-900/20 text-rose-600 dark:text-rose-400 font-bold text-xs hover:bg-rose-100 dark:hover:bg-rose-900/40 border border-rose-200 dark:border-rose-800/50 transition-all shadow-sm">
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            Validation Portal
           </Link>
 
           {/* Hamburger Menu Icon (Mobile Only) */}
           <button 
-            className="lg:hidden text-neutral-600 dark:text-neutral-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors p-2"
+            className="md:hidden text-neutral-600 hover:text-rose-600 transition-colors p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
+            {/* Simple SVG Hamburger / Close Icon */}
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMobileMenuOpen ? (
+                // "X" Close icon when menu is open
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
               ) : (
+                // Hamburger lines when menu is closed
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
@@ -93,21 +99,22 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-20 left-0 w-full bg-white dark:bg-[#0f0205] border-b border-black/10 dark:border-white/10 shadow-2xl backdrop-blur-3xl animate-fade-in-down h-[calc(100vh-5rem)] overflow-y-auto">
-          <nav className="flex flex-col px-6 py-6 gap-2 text-base font-medium text-neutral-600 dark:text-neutral-300">
-            <Link to="/" onClick={closeMobileMenu} className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors block py-3 border-b border-neutral-100 dark:border-white/5">Home</Link>
-            <Link to="/about" onClick={closeMobileMenu} className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors block py-3 border-b border-neutral-100 dark:border-white/5">About</Link>
-            <Link to="/goals" onClick={closeMobileMenu} className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors block py-3 border-b border-neutral-100 dark:border-white/5">The Goals</Link>
-            <Link to="/committee" onClick={closeMobileMenu} className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors block py-3 border-b border-neutral-100 dark:border-white/5">Committee</Link>
-            <Link to="/ambassadors" onClick={closeMobileMenu} className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors block py-3 border-b border-neutral-100 dark:border-white/5">Ambassadors</Link>
-            <Link to="/program" onClick={closeMobileMenu} className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors block py-3 border-b border-neutral-100 dark:border-white/5">Program</Link>
-            <Link to="/past-sessions" onClick={closeMobileMenu} className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors block py-3 border-b border-neutral-100 dark:border-white/5">Past Sessions</Link>
-            <Link to="/guidelines" onClick={closeMobileMenu} className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors block py-3 border-b border-neutral-100 dark:border-white/5">Guidelines</Link>
+        <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-black/10 shadow-2xl backdrop-blur-3xl animate-fade-in-down h-screen max-h-[calc(100vh-5rem)] overflow-y-auto">
+          <nav className="flex flex-col px-6 py-6 gap-4 text-base font-medium text-neutral-600">
+            <Link to="/" onClick={closeMobileMenu} className="hover:text-rose-600 transition-colors block py-3 border-b border-neutral-100">Home</Link>
+            <Link to="/about" onClick={closeMobileMenu} className="hover:text-rose-600 transition-colors block py-3 border-b border-neutral-100">About</Link>
+            <Link to="/goals" onClick={closeMobileMenu} className="hover:text-rose-600 transition-colors block py-3 border-b border-neutral-100">The Goals</Link>
+            <Link to="/committee" onClick={closeMobileMenu} className="hover:text-rose-600 transition-colors block py-3 border-b border-neutral-100">Committee</Link>
+            <Link to="/ambassadors" onClick={closeMobileMenu} className="hover:text-rose-600 transition-colors block py-3 border-b border-neutral-100">Ambassadors</Link>
+            <Link to="/program" onClick={closeMobileMenu} className="hover:text-rose-600 transition-colors block py-3 border-b border-neutral-100">Program</Link>
+            <Link to="/past-sessions" onClick={closeMobileMenu} className="hover:text-rose-600 transition-colors block py-3 border-b border-neutral-100">Past Sessions</Link>
+            <Link to="/guidelines" onClick={closeMobileMenu} className="hover:text-rose-600 transition-colors block py-3 border-b border-neutral-100">Guidelines</Link>
             
-            {/* Mobile Submit Button */}
-            <Link to="/register" onClick={closeMobileMenu} className="mt-6 md:hidden flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold text-base text-center transition-all shadow-md">
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              Submission Portal
+            
+            {/* Mobile Register Button */}
+            <Link to="/register" onClick={closeMobileMenu} className="mt-4 sm:hidden flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl bg-rose-50 dark:bg-rose-900/20 text-rose-600 dark:text-rose-400 font-bold text-sm text-center hover:bg-rose-100 dark:hover:bg-rose-900/40 border border-rose-200 dark:border-rose-800/50 transition-all shadow-sm">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              Validation Portal
             </Link>
           </nav>
         </div>
