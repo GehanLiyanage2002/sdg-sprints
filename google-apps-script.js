@@ -1,3 +1,11 @@
+function setup() {
+  // Run this function manually once in the Apps Script editor 
+  // to trigger the Google Drive authorization popup for WRITE access.
+  var folder = DriveApp.getFolderById("186S2aOatocyB5U-jnsX9ESWVsH6AzHgN");
+  var dummy = folder.createFile("test_auth.txt", "test");
+  dummy.setTrashed(true); // Clean it up immediately
+}
+
 function doPost(e) {
   try {
     var data = JSON.parse(e.postData.contents);
