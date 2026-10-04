@@ -4,6 +4,7 @@ const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbww1D_GGiC5B8
 
 const ALLOWED_EMAILS = [
   "hhadithya34@gmail.com",
+  "gahenliyanage@gmail.com",
   "varun.sada2004@gmail.com",
   "22fis0511@ms.sab.as.lk",
   "azkym555@gmail.com",
@@ -141,7 +142,15 @@ export default function RegisterPage() {
     }
   };
 
-  // Validation handlers removed to simplify rendering
+  const handleEmailInput = (e) => {
+    const start = e.target.selectionStart;
+    const end = e.target.selectionEnd;
+    const lowercased = e.target.value.toLowerCase();
+    e.target.value = lowercased;
+    e.target.setSelectionRange(start, end);
+    
+    setIsValidEmail(ALLOWED_EMAILS.map(em => em.toLowerCase()).includes(lowercased.trim()));
+  };
 
   return (
     <div className="pt-28 pb-16 min-h-screen relative bg-slate-50/50 dark:bg-[#0f0205]">
@@ -206,12 +215,15 @@ export default function RegisterPage() {
                     id="email"
                     name="email"
                     required 
-                    type="text" 
-                    onChange={(e) => {
-                      const val = e.target.value;
-                      const isMatch = ALLOWED_EMAILS.map(em => em.toLowerCase()).includes(val.trim().toLowerCase());
-                      setIsValidEmail(isMatch);
-                    }}
+                    type="email" 
+                    defaultValue=""
+                    onInput={handleEmailInput}
+                    dir="ltr"
+                    autoComplete="email"
+                    autoCapitalize="none"
+                    autoCorrect="off"
+                    spellCheck="false"
+                    style={{ textTransform: 'lowercase', textAlign: 'left' }}
                     className={`w-full pl-5 pr-12 py-3.5 rounded-xl bg-slate-50 dark:bg-black/50 border ${isValidEmail ? 'border-emerald-500 focus:border-emerald-500 focus:ring-emerald-500/50' : 'border-slate-200 dark:border-white/10 focus:border-rose-500 focus:ring-rose-500/50'} focus:bg-white focus:ring-2 outline-none dark:text-white transition-all shadow-sm placeholder:text-slate-400 font-sans`} 
                     placeholder="leader@example.com" 
                   />
