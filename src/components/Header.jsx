@@ -72,8 +72,9 @@ export default function Header() {
           </button>
 
           {/* CTA Button - Hidden on very small screens to save space, put inside mobile menu instead */}
-          <Link to="/register" className="hidden sm:block px-5 py-2.5 rounded-full bg-rose-600 text-white font-bold text-sm hover:bg-rose-700 transition-all shadow-md">
-            Register Now
+          <Link to="/register" className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-rose-50 dark:bg-rose-900/20 text-rose-600 dark:text-rose-400 font-bold text-xs hover:bg-rose-100 dark:hover:bg-rose-900/40 border border-rose-200 dark:border-rose-800/50 transition-all shadow-sm">
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            Validation Portal
           </Link>
 
           {/* Hamburger Menu Icon (Mobile Only) */}
@@ -111,8 +112,9 @@ export default function Header() {
             
             
             {/* Mobile Register Button */}
-            <Link to="/register" onClick={closeMobileMenu} className="mt-4 sm:hidden w-full px-5 py-3.5 rounded-xl bg-rose-600 text-white font-bold text-center hover:bg-rose-700 transition-all shadow-md block">
-              Register Now
+            <Link to="/register" onClick={closeMobileMenu} className="mt-4 sm:hidden flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl bg-rose-50 dark:bg-rose-900/20 text-rose-600 dark:text-rose-400 font-bold text-sm text-center hover:bg-rose-100 dark:hover:bg-rose-900/40 border border-rose-200 dark:border-rose-800/50 transition-all shadow-sm">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              Validation Portal
             </Link>
           </nav>
         </div>
