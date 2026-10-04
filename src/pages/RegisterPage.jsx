@@ -1,26 +1,73 @@
 import { useState, useRef } from 'react';
 
-// Using environment variables for sensitive data
-const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbww1D_GGiC5B8zVLeXs8zwZQHgpVHhzMqFJimF6BC62kmtXMcqEX3Vrp9lgNe_vn4YEew/exec"; 
 
-// Parse the comma-separated emails from the env file
-const ALLOWED_EMAILS = (import.meta.env.VITE_ALLOWED_EMAILS || "")
-  .split(",")
-  .map(email => email.trim())
-  .filter(email => email.length > 0);
+const ALLOWED_EMAILS = [
+  "hhadithya34@gmail.com",
+  "gahenliyanage@gmail.com",
+  "varun.sada2004@gmail.com",
+  "22fis0511@ms.sab.as.lk",
+  "azkym555@gmail.com",
+  "sulekadissanayake2003@gmail.com",
+  "dileepamalshan638@gmail.com",
+  "savinduperera70@gmail.com",
+  "dury.20250399@iit.ac.lk",
+  "sahilkavishka428@gmail.com",
+  "sanithi94125@gmail.com",
+  "tkathuskan@gmail.com",
+  "yasmine.elhorry@ieee.com",
+  "samnihasnath@gmail.com",
+  "mathuthev6@gmail.com",
+  "nisalsankalana321@gmail.com",
+  "thavarish369@gmail.com",
+  "thamarujalthotage1@gmail.com",
+  "kathirsan066@gmail.com",
+  "niranganayanajith195@gmail.com",
+  "niroshamadumali37@gmail.com",
+  "mohanuvaram123@gmail.com",
+  "praveenstudy823@gmail.com",
+  "sachindunethminweerasinghe@gmail.com",
+  "shanaya.shanu004@gmail.com",
+  "nhmhasara@gmail.com",
+  "tharuhellocool@gmail.com",
+  "dilukshan.mailing@gmail.com",
+  "thushinithushini5@gmail.com",
+  "thamelsamith@gmail.com",
+  "meththakalu@gmail.com",
+  "dasununimail@gmail.com",
+  "sadeepahearth@gmail.com",
+  "hasenalbanna123@gmail.com",
+  "kajanika955@gmail.com",
+  "prasadinibuddhika20@gmail.com",
+  "inusha.thathsara@gmail.com",
+  "Kanishkashanuk01@gmail.com",
+  "chathuminivishmi@gmail.com",
+  "kmogith1@gmail.com",
+  "dilshanprathapaarachchi@gmail.com",
+  "bahardeenayas8@gmail.com",
+  "chathu9998@gmail.com",
+  "sanindutalwatte9@gmail.com",
+  "nisindurupasinghe@gmail.com",
+  "sahankiridena17@gmail.com",
+  "piravahinym@gmail.com",
+  "navomalshamusic@gmail.com",
+  "sankhakuruppu@gmail.com",
+  "ushanchathushka2002@gmail.com",
+  "prasadhipanduwawala@gmail.com",
+  "malshaweerasinghe2003@gmail.com",
+  "vishwarathnayake@outlook.com",
+  "dhanukadilsara@gmail.com",
+  "mayooriekanthan12@gmail.com"
+];
 
 export default function RegisterPage() {
   const formRef = useRef(null);
-  
-  // Controlled inputs are much safer here as long as we use type="text"
-  const [email, setEmail] = useState('');
   const [file, setFile] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
 
-  // Validate the email automatically on every keystroke
-  const isValidEmail = ALLOWED_EMAILS.map(em => em.toLowerCase()).includes(email.trim().toLowerCase());
+  const [isValidEmail, setIsValidEmail] = useState(false);
 
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -45,12 +92,17 @@ export default function RegisterPage() {
     e.preventDefault();
     setSubmitError('');
 
-    if (!email) {
+    const formData = new FormData(formRef.current);
+    const emailValue = formData.get('email');
+
+    if (!emailValue) {
       setSubmitError('Please enter your email address.');
       return;
     }
 
-    if (!isValidEmail) {
+    const trimmedEmail = emailValue.toString().trim().toLowerCase();
+
+    if (!ALLOWED_EMAILS.map(em => em.toLowerCase()).includes(trimmedEmail)) {
       setSubmitError('Unauthorized: Only registered team leader emails are allowed to submit the validation template.');
       return;
     }
@@ -90,6 +142,16 @@ export default function RegisterPage() {
     }
   };
 
+  const handleEmailInput = (e) => {
+    const start = e.target.selectionStart;
+    const end = e.target.selectionEnd;
+    const lowercased = e.target.value.toLowerCase();
+    e.target.value = lowercased;
+    e.target.setSelectionRange(start, end);
+    
+    setIsValidEmail(ALLOWED_EMAILS.map(em => em.toLowerCase()).includes(lowercased.trim()));
+  };
+
   return (
     <div className="pt-28 pb-16 min-h-screen relative bg-slate-50/50 dark:bg-[#0f0205]">
       {/* Background Ambience */}
@@ -125,7 +187,7 @@ export default function RegisterPage() {
               onClick={() => { 
                 setSubmitSuccess(false); 
                 setFile(null); 
-                setEmail('');
+                setIsValidEmail(false);
                 if(formRef.current) formRef.current.reset();
               }} 
               className="px-8 py-3 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-700 dark:text-white font-bold rounded-xl transition-colors"
@@ -153,9 +215,15 @@ export default function RegisterPage() {
                     id="email"
                     name="email"
                     required 
-                    type="text" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    type="email" 
+                    defaultValue=""
+                    onInput={handleEmailInput}
+                    dir="ltr"
+                    autoComplete="email"
+                    autoCapitalize="none"
+                    autoCorrect="off"
+                    spellCheck="false"
+                    style={{ textTransform: 'lowercase', textAlign: 'left' }}
                     className={`w-full pl-5 pr-12 py-3.5 rounded-xl bg-slate-50 dark:bg-black/50 border ${isValidEmail ? 'border-emerald-500 focus:border-emerald-500 focus:ring-emerald-500/50' : 'border-slate-200 dark:border-white/10 focus:border-rose-500 focus:ring-rose-500/50'} focus:bg-white focus:ring-2 outline-none dark:text-white transition-all shadow-sm placeholder:text-slate-400 font-sans`} 
                     placeholder="leader@example.com" 
                   />
