@@ -9,7 +9,7 @@ import AmbassadorsPage from './pages/AmbassadorsPage';
 import ProgramPage from './pages/ProgramPage';
 import PastSessionsPage from './pages/PastSessionsPage';
 import GuidelinesPage from './pages/GuidelinesPage';
-import RegisterPage from './pages/RegisterPage';
+import SubmissionPage from './pages/SubmissionPage';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -31,7 +31,7 @@ function App() {
             <Route path="/program" element={<ProgramPage />} />
             <Route path="/past-sessions" element={<PastSessionsPage />} />
             <Route path="/guidelines" element={<GuidelinesPage />} />
-            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/submission" element={<SubmissionPage />} />
           </Routes>
         </main>
         

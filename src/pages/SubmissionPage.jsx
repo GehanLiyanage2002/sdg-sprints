@@ -60,7 +60,7 @@ const ALLOWED_EMAILS = [
   "mayooriekanthan12@gmail.com"
 ];
 
-export default function RegisterPage() {
+export default function SubmissionPage() {
   const formRef = useRef(null);
   const [file, setFile] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);

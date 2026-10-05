@@ -69,7 +69,7 @@ export default function Header() {
           </button>
 
           {/* CTA Button - Hidden on very small screens to save space, put inside mobile menu instead */}
-          <Link to="/register" className="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+          <Link to="/submission" className="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             Submission Portal
           </Link>
@@ -105,7 +105,7 @@ export default function Header() {
             <Link to="/guidelines" onClick={closeMobileMenu} className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors block py-3 border-b border-neutral-100 dark:border-white/5">Guidelines</Link>
             
             {/* Mobile Submit Button */}
-            <Link to="/register" onClick={closeMobileMenu} className="mt-6 md:hidden flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold text-base text-center transition-all shadow-md">
+            <Link to="/submission" onClick={closeMobileMenu} className="mt-6 md:hidden flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold text-base text-center transition-all shadow-md">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               Submission Portal
             </Link>
