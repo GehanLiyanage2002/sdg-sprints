@@ -69,6 +69,9 @@ export default function SubmissionPage() {
 
   const [isValidEmail, setIsValidEmail] = useState(false);
 
+  // Auto-close on Oct 9, 2026 at 11:59 PM (+05:30)
+  const isClosed = new Date() > new Date('2026-10-09T23:59:00+05:30');
+
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       setFile(e.target.files[0]);
@@ -174,7 +177,17 @@ export default function SubmissionPage() {
       </div>
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        {submitSuccess ? (
+        {isClosed ? (
+          <div className="bg-white dark:bg-[#1a0408] border border-rose-200 dark:border-rose-900/50 rounded-3xl p-10 sm:p-16 shadow-2xl text-center animate-fade-in">
+            <div className="w-24 h-24 bg-rose-100 dark:bg-rose-900/40 text-rose-600 dark:text-rose-400 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner ring-8 ring-rose-50 dark:ring-rose-900/20">
+              <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            </div>
+            <h3 className="text-3xl md:text-4xl font-black text-slate-800 dark:text-white mb-4 tracking-tight">Submissions Closed</h3>
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-md mx-auto mb-8 leading-relaxed">
+              The template submission portal is now closed. Thank you to all the teams who submitted their problem validation reports!
+            </p>
+          </div>
+        ) : submitSuccess ? (
           <div className="bg-white dark:bg-[#1a0408] border border-green-200 dark:border-green-900/50 rounded-3xl p-10 sm:p-16 shadow-2xl text-center animate-fade-in">
             <div className="w-24 h-24 bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner ring-8 ring-green-50 dark:ring-green-900/20">
               <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
