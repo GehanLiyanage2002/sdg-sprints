@@ -69,8 +69,8 @@ export default function SubmissionPage() {
 
   const [isValidEmail, setIsValidEmail] = useState(false);
 
-  // Auto-close on Oct 9, 2026 at 11:59 PM (+05:30)
-  const isClosed = new Date() > new Date('2026-10-09T23:59:00+05:30');
+  // Auto-close on Oct 15, 2026 at 11:59 AM (+05:30)
+  const isClosed = new Date() > new Date('2026-10-15T11:59:00+05:30');
 
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -94,6 +94,11 @@ export default function SubmissionPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitError('');
+
+    if (new Date() > new Date('2026-10-15T11:59:00+05:30')) {
+      setSubmitError('The submission portal has closed.');
+      return;
+    }
 
     const formData = new FormData(formRef.current);
     const emailValue = formData.get('email');
@@ -216,7 +221,7 @@ export default function SubmissionPage() {
                 Important Notice
               </h3>
               <p className="text-sm text-rose-700 dark:text-rose-400">
-                Team registration has successfully concluded. This portal is strictly for registered team leaders to submit their Problem Validation Template. Please use the exact email address you used during registration.
+                Team registration has successfully concluded. This portal is strictly for registered team leaders to submit their Problem Validation Template. Please use the exact email address you used during registration. Portal closes on <strong>October 15, 2026 at 11:59 AM</strong>.
               </p>
             </div>
 

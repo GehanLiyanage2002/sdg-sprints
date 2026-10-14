@@ -16,64 +16,48 @@ export default function ProgramPage() {
   const timelineEvents = [
     {
       step: "Registration",
-      title: "Registration Phase",
-      date: "11 Aug – 1 Sep 2026",
+      title: "Registration",
+      date: "8–30 September 2026",
       duration: "3 weeks",
       desc: "Participants from universities and institutions register their teams and select a problem from the SDG Problem Pool.",
       marks: null
     },
     {
-      step: "Validation",
-      title: "Team Validation & Group Allocation",
-      date: "2 Sep – 7 Sep 2026",
-      duration: "1 week",
-      desc: "Registered teams reviewed for compliance. Approved teams added to communication groups and provided resources.",
-      marks: null
-    },
-    {
       step: "Checkpoint 1",
-      title: "Registration & Intent",
-      date: "Early September 2026",
-      duration: "Screening",
-      desc: "Purpose: Ensure SDG alignment. Teams are evaluated on a Pass / Revise basis.",
-      marks: "Screening Only"
-    },
-    {
-      step: "Checkpoint 2",
-      title: "Problem Validation",
-      date: "8 Sep – 30 Sep 2026",
-      duration: "2 weeks prep + 1 week eval",
+      title: "SDG Problem Validation Report Submission",
+      date: "9 October 2026",
+      duration: "Report Submission",
       desc: "Teams conduct research to understand the selected SDG problem and validate it using evidence from reliable sources or stakeholder insights.",
       marks: "25 Marks"
     },
     {
-      step: "Checkpoint 3",
-      title: "Solution Concept Deck",
-      date: "30 Sep – 20 Oct 2026",
-      duration: "2 weeks prep + 1 week eval",
+      step: "Checkpoint 2",
+      title: "Solution Concept Deck Submission",
+      date: "29 October 2026",
+      duration: "Deck Submission",
       desc: "Submit a Concept Deck outlining the proposed solution, technologies used, and expected impact aligned with the SDG challenge.",
       marks: "20 Marks"
     },
     {
-      step: "Checkpoint 4",
+      step: "Checkpoint 3",
       title: "Solution Concept Pitch",
-      date: "Pitch Event: 5 Nov 2026",
+      date: "15 November 2026",
       duration: "Physical Presentation",
-      desc: "Shortlisted teams present their solution concept to the jury panel. Top 10 teams selected to proceed to prototype development.",
+      desc: "Shortlisted teams present their solution concept to the jury panel. Top teams selected to proceed to prototype development.",
       marks: "15 Marks"
     },
     {
-      step: "Checkpoint 5",
-      title: "Prototype Development & Feasibility",
-      date: "13 Nov – 24 Dec 2026",
-      duration: "4 weeks prep + 2 weeks eval",
+      step: "Checkpoint 4",
+      title: "Prototype Development and Submission",
+      date: "24 December 2026",
+      duration: "Development & Submission",
       desc: "Develop a functional prototype or technical architecture. Submit a demonstration video and technical documentation.",
       marks: "25 Marks"
     },
     {
       step: "Finals",
-      title: "SDG Sprints Final Showcase",
-      date: "Early January 2027",
+      title: "SDG Sprints Showcase",
+      date: "January 2027",
       duration: "Physical Event",
       desc: "Top teams present at the Final Showcase. 5-min pitch, 3-min prototype demo, and 5-min jury Q&A.",
       marks: "15 Marks"
@@ -141,7 +125,10 @@ export default function ProgramPage() {
         {/* --- SECTION 2: SDG SOLUTIONS CHALLENGE (TIMELINE) --- */}
         <div>
           <div className="text-center mb-16">
-            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">SDG Solutions Challenge</h3>
+            <span className="text-xs font-bold uppercase tracking-widest text-rose-600 dark:text-rose-400 mb-2 block">
+              Official Timeline
+            </span>
+            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">SDG Solutions Challenge 2026</h3>
             <p className="text-slate-600 dark:text-rose-100/70 max-w-2xl mx-auto text-lg">
               The core component of the program. Develop innovative solutions through multiple structured evaluation checkpoints.
             </p>
@@ -193,7 +180,7 @@ export default function ProgramPage() {
 
                       {/* Marks Badge (Only shows if there are evaluation marks) */}
                       {event.marks && (
-                        <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl border font-bold text-sm ${event.marks === "Screening Only" ? "bg-blue-500/20 border-blue-500/30 text-blue-300" : "bg-emerald-500/20 border-emerald-500/30 text-emerald-300"}`}>
+                        <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl border font-bold text-sm ${event.marks === "Screening Only" ? "bg-blue-500/10 dark:bg-blue-500/20 border-blue-500/20 dark:border-blue-500/30 text-blue-700 dark:text-blue-300" : "bg-emerald-500/10 dark:bg-emerald-500/20 border-emerald-500/20 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-300"}`}>
                           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                           Evaluation: {event.marks}
                         </div>
