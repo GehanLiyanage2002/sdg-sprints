@@ -7,5 +7,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  assetsInclude: ['**/*.docx'],
+  assetsInclude: ['**/*.docx', '**/*.pptx'],
 })

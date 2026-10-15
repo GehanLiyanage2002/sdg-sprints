@@ -1,11 +1,27 @@
 import React from 'react';
 import handbookPdf from '../assets/SDG Solutions Challenge 2026 Handbook.docx.pdf';
 import problemValidationDoc from '../assets/Problem Validation Submission Template.docx';
+import solutionConceptDeckTemplate from '../assets/SDG Sprints 2026 Solution Concept Deck Template.pptx';
 
 export default function GuidelinesPage() {
   const documents = [
     {
       id: 1,
+      title: 'SDG Sprints 2026 Solution Concept Deck Template',
+      description: 'The official 14-slide presentation template for your solution concept pitch. Covers problem validation, technical architecture, feasibility, prototype plan, and SDG alignment.',
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+        </svg>
+      ),
+      type: 'PPTX',
+      size: '66 KB',
+      available: true,
+      href: solutionConceptDeckTemplate,
+      downloadName: 'SDG Sprints 2026 Solution Concept Deck Template.pptx'
+    },
+    {
+      id: 2,
       title: 'Problem Validation Submission Template',
       description: 'The template for submitting your problem validation. Includes sections for problem analysis, user research, and validation methodology.',
       icon: (
@@ -17,10 +33,11 @@ export default function GuidelinesPage() {
       size: '28 KB',
       available: true,
       href: problemValidationDoc,
+      downloadName: 'Problem Validation Submission Template.docx',
       visibleAfter: new Date('2026-10-02T23:59:00+05:30')
     },
     {
-      id: 2,
+      id: 3,
       title: 'SDG Solutions Challenge 2026 – Official Contestant Handbook & Guidelines',
       description: 'Comprehensive guide covering eligibility criteria, evaluation rubrics, submission deadlines, and code of conduct for all participating teams.',
       icon: (
@@ -31,21 +48,10 @@ export default function GuidelinesPage() {
       type: 'PDF',
       size: '1.2 MB',
       available: true,
-      href: handbookPdf
-    },
-    {
-      id: 3,
-      title: 'Final Presentation Pitch Deck',
-      description: 'A recommended slide deck structure for your final pitch to the judges. Helps you effectively communicate your solution\'s impact, feasibility, and technology stack.',
-      icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-        </svg>
-      ),
-      type: 'PPTX',
-      size: '5.4 MB',
-      available: false
+      href: handbookPdf,
+      downloadName: 'SDG Solutions Challenge 2026 Handbook.docx.pdf'
     }
+    
   ];
 
   return (
@@ -73,9 +79,9 @@ export default function GuidelinesPage() {
             </svg>
           </div>
           <div>
-            <h3 className="font-bold text-slate-900 dark:text-white mb-1">Handbook Available Now</h3>
+            <h3 className="font-bold text-slate-900 dark:text-white mb-1">Templates & Handbook Available Now</h3>
             <p className="text-slate-600 dark:text-rose-100/80 text-sm leading-relaxed">
-              The Official Contestant Handbook & Guidelines is available now. Other requirement documents, forms, and templates will be updated in due course.
+              The Official Contestant Handbook & Guidelines, Problem Validation Template, and Solution Concept Deck Template are available now. Other requirement documents and forms will be updated in due course.
             </p>
           </div>
         </div>
@@ -108,7 +114,7 @@ export default function GuidelinesPage() {
                 </div>
                 
                 {doc.available ? (
-                  <a href={doc.href} download className="w-full py-3.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold hover:bg-rose-600 dark:hover:bg-rose-500 hover:text-white transition-colors flex items-center justify-center gap-2">
+                  <a href={doc.href} download={doc.downloadName || true} className="w-full py-3.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold hover:bg-rose-600 dark:hover:bg-rose-500 hover:text-white transition-colors flex items-center justify-center gap-2">
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </svg>
